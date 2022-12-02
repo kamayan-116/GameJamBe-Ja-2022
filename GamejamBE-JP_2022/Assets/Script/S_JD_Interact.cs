@@ -30,4 +30,9 @@ public class S_JD_Interact : MonoBehaviour
             canBeActivate = false;
         }
     }
+
+    private void Interaction()
+    {
+
+    }
 }
