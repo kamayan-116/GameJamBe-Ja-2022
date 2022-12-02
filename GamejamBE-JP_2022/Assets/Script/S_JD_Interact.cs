@@ -10,7 +10,7 @@ public class S_JD_Interact : MonoBehaviour
     {
         if (canBeActivate && Input.GetButtonDown("Interact"))
         {
-            S_JD_Player.Instance.GetWater();
+            S_JD_Player.Instance.Interact("GetWater");
         }
     }
 
