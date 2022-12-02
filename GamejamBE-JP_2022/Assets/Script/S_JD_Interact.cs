@@ -5,12 +5,13 @@ using UnityEngine;
 public class S_JD_Interact : MonoBehaviour
 {
     private bool canBeActivate = false;
+    public string interactionType = "GetWater";
 
     void Update()
     {
         if (canBeActivate && Input.GetButtonDown("Interact"))
         {
-            S_JD_Player.Instance.Interact("GetWater");
+            S_JD_Player.Instance.Interact(interactionType);
         }
     }
 
