@@ -1,23 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_JD_MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject MainMenuPanel;
+    public GameObject ControlsPanel;
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.UnloadSceneAsync(1);
+        //SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        StartCoroutine(LoadSceneAsync(true));
+    }
+
+    public void BackToMainMenu()
+    {
+        ControlsPanel.SetActive(false);
+        MainMenuPanel.SetActive(true);
+    }
+
+    public void Controls()
+    {
+        MainMenuPanel.SetActive(false);
+        ControlsPanel.SetActive(true);        
+    }
+
+    private IEnumerator LoadSceneAsync(bool useLoadingScreen)
+    {
+
+        AsyncOperation asyncOp = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
+        while (!asyncOp.isDone) yield return null;
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
     }
 }
