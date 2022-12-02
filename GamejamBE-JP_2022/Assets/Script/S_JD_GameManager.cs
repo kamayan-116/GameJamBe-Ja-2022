@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class S_JD_GameManager : MonoBehaviour
 {
+    public S_JD_CanvasManager CanvaManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,6 @@ public class S_JD_GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
