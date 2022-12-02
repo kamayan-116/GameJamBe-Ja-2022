@@ -25,7 +25,6 @@ public class S_JD_Interact : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        print("exit");
         if (other.tag == "Player")
         {
             canBeActivate = false;

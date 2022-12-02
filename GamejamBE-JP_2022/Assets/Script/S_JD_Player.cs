@@ -10,6 +10,7 @@ public class S_JD_Player : MonoBehaviour
     public GameObject PlayerCharacter;
     public float Distance = 11;
     public int WaterValue = 0;
+    public int WoodValue = 0;
 
     private void Awake()
     {
@@ -32,11 +33,19 @@ public class S_JD_Player : MonoBehaviour
         WaterValue += 1;
     }
 
+    public void GetWood()
+    {
+        WoodValue += 1;
+    }
     public void Interact(string action)
     {
         if(action == "GetWater")
         {
             GetWater();
+        }
+        else if(action == "GetWood")
+        {
+            GetWood();
         }
         else
         {
