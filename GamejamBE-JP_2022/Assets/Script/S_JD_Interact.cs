@@ -12,6 +12,7 @@ public class S_JD_Interact : MonoBehaviour
         if (canBeActivate && Input.GetButtonDown("Interact"))
         {
             S_JD_Player.Instance.Interact(interactionType);
+            Interaction();
         }
     }
 
@@ -31,7 +32,7 @@ public class S_JD_Interact : MonoBehaviour
         }
     }
 
-    private void Interaction()
+    protected virtual void Interaction()
     {
 
     }

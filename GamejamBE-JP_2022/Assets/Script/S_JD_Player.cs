@@ -9,7 +9,7 @@ public class S_JD_Player : MonoBehaviour
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
-    private int WaterValue = 0;
+    public int WaterValue = 0;
 
     private void Awake()
     {
