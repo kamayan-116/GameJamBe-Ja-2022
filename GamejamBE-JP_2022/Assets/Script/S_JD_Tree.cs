@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class S_JD_Tree : S_JD_Interact
 {
-    public Animator BottomTree;
-    public Animator UpTree;
+    public Animator UpTreeAnim;
+    public GameObject UpTree;
+    public GameObject BottomTree;
 
     protected override void Interaction()
     {
-
+        UpTreeAnim.SetTrigger("Fall");
     }
 }
