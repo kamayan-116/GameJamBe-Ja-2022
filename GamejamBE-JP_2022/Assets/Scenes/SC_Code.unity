@@ -168,6 +168,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadAtMenu: 1
+  EarthValue: 50
+  StressValue: 50
+  InGame: 0
+  TreeNumber: 0
 --- !u!1001 &1075095523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,6 +248,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1214689659, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 680960907294180931, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_IsActive

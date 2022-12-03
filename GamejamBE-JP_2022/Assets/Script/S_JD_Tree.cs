@@ -13,6 +13,7 @@ public class S_JD_Tree : S_JD_Interact
     private void Start()
     {
         interactionType = "GetWood";
+        S_JD_GameManager.Instance.TreeNumber += 1;
     }
 
     protected override void Interaction()

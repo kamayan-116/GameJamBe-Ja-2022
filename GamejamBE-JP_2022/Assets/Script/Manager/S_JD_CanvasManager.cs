@@ -39,8 +39,8 @@ public class S_JD_CanvasManager : MonoBehaviour
 
     void Update()
     {
-        float cancel = Input.GetAxis("Cancel");
-        if(cancel > 0)
+        //float cancel = Input.GetAxis("Cancel");
+        if(Input.GetButton("Cancel") && S_JD_GameManager.Instance.InGame)
         {
             GoToPause();
         }
@@ -118,9 +118,11 @@ public class S_JD_CanvasManager : MonoBehaviour
     // Function of the button to return to the title in the pause
     public void BackToTitle()
     {
+        S_JD_GameManager.Instance.InGame = false;
         pauseMenuPanel.SetActive(false);
         endingPanel.SetActive(false);
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync(2);
     }
 
     // Ending Panel Functions
