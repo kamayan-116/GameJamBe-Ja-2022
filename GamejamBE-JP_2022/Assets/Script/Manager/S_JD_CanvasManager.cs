@@ -38,19 +38,19 @@ public class S_JD_CanvasManager : MonoBehaviour
         DeathFade.SetTrigger("DeathTrigger");
     }
 
-    // Argument(_value) is 0~1
+    // Argument(_value) is 0~100
     public void SetValueEarth(float _value)
     {
-        earthSlider.value = _value;
+        StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
     }
 
     /// <summary>
     /// Player slider value
     /// </summary>
-    /// <param name="_value">value between 0 and 1</param>
+    /// <param name="_value">value between 0 and 100</param>
     public void SetValuePlayer(float _value)
     {
-        playerSlider.value = _value;
+       StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
     }
 
     public void SetValueWater(int _value)
@@ -66,5 +66,21 @@ public class S_JD_CanvasManager : MonoBehaviour
     public void SetActiveHUD(bool _active)
     {
         HUD.SetActive(_active);
+    }
+
+    private IEnumerator SliderValueChange(Slider slider, float nowValue, float targetValue)
+    {
+        while(nowValue <= targetValue)
+        {
+            slider.value += 0.1f;
+            nowValue = slider.value;
+            yield return null;
+        }
+        while(nowValue > targetValue)
+        {
+            slider.value -= 0.1f;
+            nowValue = slider.value;
+            yield return null;
+        }
     }
 }
