@@ -11,6 +11,11 @@ public class S_JD_GameManager : MonoBehaviour
     public float StressValue = 50f;
     public bool InGame = false;
     public int TreeNumber = 0;
+    public float speedStress = 1;
+    public float speedTree = 1;
+
+    private float Timer = 0;
+
 
     private void Awake()
     {
@@ -30,12 +35,20 @@ public class S_JD_GameManager : MonoBehaviour
     {
         if (InGame)
         {
+            SetStressValue();
+
             SetEarthValue();
 
-            EarthValue = TreeNumber * 1;
+            SetTimer();
+
+            CheckDeath();
         }
     }
 
+    private void SetTimer()
+    {
+        Timer += Time.deltaTime * Time.timeScale;
+    }
     public IEnumerator LoadSceneAsync(bool useLoadingScreen)
     {
 
@@ -48,11 +61,38 @@ public class S_JD_GameManager : MonoBehaviour
     public void StartGame()
     {
         InGame = true;
+        S_JD_Player.Instance.AvailableMouvement = true;
+
+    }
+
+    public void SetStressValue()
+    {
+        StressValue = StressValue - (1 * Time.deltaTime * speedStress);
+        S_JD_CanvasManager.Instance.SetValuePlayer(StressValue);
     }
 
     public void SetEarthValue()
     {
-        StressValue = StressValue - 1 * Time.deltaTime;
+        EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedStress);
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
+    }
+
+    public void GameOver(int _cause)
+    {
+        S_JD_CanvasManager.Instance.EndingPanel(Timer, 0);
+        S_JD_Player.Instance.AvailableMouvement = false;
+        InGame = false;
+    }
+
+    public void CheckDeath()
+    {
+        if(EarthValue <= 0)
+        {
+            GameOver(0);
+        }
+        else if (StressValue <= 0)
+        {
+            GameOver(1);
+        }
     }
 }

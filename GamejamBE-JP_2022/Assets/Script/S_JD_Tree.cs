@@ -28,6 +28,7 @@ public class S_JD_Tree : S_JD_Interact
         yield return new WaitForSeconds(TimeOfCuttingWood);
         UpTreeAnim.SetTrigger("Fall");
         S_JD_Player.Instance.AvailableMouvement = true;
+        S_JD_GameManager.Instance.TreeNumber -= 1;
         StartCoroutine(DeadTimer());
     }
 

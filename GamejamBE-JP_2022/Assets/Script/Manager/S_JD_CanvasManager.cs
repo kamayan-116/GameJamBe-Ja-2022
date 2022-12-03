@@ -22,6 +22,9 @@ public class S_JD_CanvasManager : MonoBehaviour
     public GameObject MiniGamePanel;
     public Animator SmahButton;
 
+    public GameObject GameOverEarth;
+    public GameObject GameOverStress;
+
     public Animator DeathFade;
     #endregion
 
@@ -54,7 +57,8 @@ public class S_JD_CanvasManager : MonoBehaviour
     // Argument(_value) is 0~100
     public void SetValueEarth(float _value)
     {
-        StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
+        //StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
+        earthSlider.value = _value;
     }
 
     /// <summary>
@@ -63,7 +67,8 @@ public class S_JD_CanvasManager : MonoBehaviour
     /// <param name="_value">value between 0 and 100</param>
     public void SetValuePlayer(float _value)
     {
-       StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
+        playerSlider.value = _value;
+       //StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
     }
 
     // Argument(_value) is 0~100
@@ -118,11 +123,13 @@ public class S_JD_CanvasManager : MonoBehaviour
     // Function of the button to return to the title in the pause
     public void BackToTitle()
     {
+        DeathFading();
         S_JD_GameManager.Instance.InGame = false;
         pauseMenuPanel.SetActive(false);
         endingPanel.SetActive(false);
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(2);
+        RemoveEndingPanel();
     }
 
     // Ending Panel Functions
@@ -131,6 +138,27 @@ public class S_JD_CanvasManager : MonoBehaviour
         HUD.SetActive(false);
         endingPanel.SetActive(true);
         playTimeText.text = "PlayTime：" + _clearTime;
-        clearImage.sprite = clearSprite[_clearCause];
+
+        if(_clearCause == 0)
+        {
+            GameOverEarth.SetActive(false);
+            GameOverStress.SetActive(true);
+        }
+        else if (_clearCause == 1)
+        {
+            GameOverEarth.SetActive(false);
+            GameOverStress.SetActive(true);
+
+        }
+        else
+        {
+            print("Error in the ending condition");
+        }
+        //clearImage.sprite = clearSprite[_clearCause];
+    }
+
+    public void RemoveEndingPanel()
+    {
+        endingPanel.SetActive(false);
     }
 }

@@ -60,7 +60,7 @@ public class S_JD_Player : MonoBehaviour
     public void GetBath()
     {
         if (CanLaunchMiniGame && WoodValue >= 3)
-            LaunchMiniGame();
+            LaunchMiniGame();       
     }
 
     public void GiveWater()
@@ -101,7 +101,7 @@ public class S_JD_Player : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             MiniGameScore += 1;
-            print(MiniGameScore);
+            //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
         }
         if (MiniGameScore == 10)
@@ -115,6 +115,7 @@ public class S_JD_Player : MonoBehaviour
         MiniGameScore = 0;
         InMiniGame = false;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
+        S_JD_GameManager.Instance.StressValue += 30;
 
         yield return new WaitForSeconds(_delay);
         CanLaunchMiniGame = true;
@@ -127,6 +128,7 @@ public class S_JD_Player : MonoBehaviour
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(true);
         WoodValue -= 3;
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+        S_JD_GameManager.Instance.EarthValue -= 30;
     }
 
     
