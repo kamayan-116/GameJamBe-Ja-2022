@@ -13,18 +13,18 @@ public class S_JD_TreeSpawner : MonoBehaviour
     {
         if(InGrowMode)
         {
-            Instantiate(GrowTree, gameObject.transform.position, Quaternion.identity);
+            Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
         }
         else
         {
-            ChildTree = Instantiate(TreeList[Random.Range(0, TreeList.Length)]);
+            ChildTree = Instantiate(TreeList[Random.Range(0, TreeList.Length)], gameObject.transform.position, gameObject.transform.rotation);
             ChildTree.GetComponent<S_JD_Tree>().SetParent(gameObject);
         }
     }
 
     private void GrowingTree()
     {
-        Instantiate(GrowTree, gameObject.transform.position, Quaternion.identity);
+        Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
 
     }
 
