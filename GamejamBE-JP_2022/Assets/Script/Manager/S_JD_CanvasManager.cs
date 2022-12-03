@@ -39,7 +39,11 @@ public class S_JD_CanvasManager : MonoBehaviour
 
     void Update()
     {
-        
+        float cancel = Input.GetAxis("Cancel");
+        if(cancel > 0)
+        {
+            GoToPause();
+        }
     }
 
     public void DeathFading()
