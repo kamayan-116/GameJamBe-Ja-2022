@@ -32,7 +32,21 @@ public class S_JD_Player : MonoBehaviour
 
     void Update()
     {
-        if (!InMiniGame && AvailableMouvement) transform.Rotate(new Vector3(0, 0, -Input.GetAxis("Horizontal") * Time.deltaTime) * speed);
+        if (!InMiniGame && AvailableMouvement)
+        {
+            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 2)
+            {
+                transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (S_JD_GameManager.Instance.Stamina/10)));
+            }
+            else if (S_JD_GameManager.Instance.Stamina < 2)
+            {
+                transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (0.2f)));
+            }
+            else
+            {
+                transform.Rotate(new Vector3(0, 0, -Input.GetAxis("Horizontal") * Time.deltaTime) * speed);
+            }
+        }
         if (InMiniGame)
         {
             SmashButton();
@@ -72,6 +86,11 @@ public class S_JD_Player : MonoBehaviour
         }*/
     }
 
+    public void Sleep()
+    {
+        S_JD_GameManager.Instance.Stamina = 100;
+    }
+
     public void Interact(string _action)
     {
         if(_action == "GetWater")
@@ -89,6 +108,10 @@ public class S_JD_Player : MonoBehaviour
         else if (_action == "GiveWater")
         {
             GiveWater();
+        }
+        else if (_action == "Sleep")
+        {
+            Sleep();
         }
         else
         {

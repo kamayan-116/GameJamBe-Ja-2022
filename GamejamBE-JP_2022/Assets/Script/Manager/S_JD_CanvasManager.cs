@@ -21,6 +21,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     public GameObject HUD;
     public GameObject MiniGamePanel;
     public Animator SmahButton;
+    public Slider staminaSlider;
 
     public GameObject GameOverEarth;
     public GameObject GameOverStress;
@@ -69,6 +70,11 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         playerSlider.value = _value;
        //StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
+    }
+
+    public void SetValueStamina(float _value)
+    {
+        staminaSlider.value = _value;
     }
 
     // Argument(_value) is 0~100

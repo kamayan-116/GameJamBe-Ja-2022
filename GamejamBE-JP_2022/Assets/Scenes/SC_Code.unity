@@ -123,12 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &448565799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1088152316, guid: ea46f212c1384bb438ce95471a1c7018,
-    type: 3}
-  m_PrefabInstance: {fileID: 4788320512856652119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &727959363
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +174,8 @@ MonoBehaviour:
   TreeNumber: 0
   speedStress: 1
   speedTree: 1
+  speedStamine: 1
+  Stamina: 100
 --- !u!1001 &1075095523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,12 +245,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d4b669457648c84eb6c9a0b8a8ba259, type: 3}
---- !u!1 &1210179365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7650444251437572536, guid: ea46f212c1384bb438ce95471a1c7018,
-    type: 3}
-  m_PrefabInstance: {fileID: 4788320512856652119}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4788320512856652119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,26 +252,64 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1214689659, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+    - target: {fileID: 1088152317, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088152317, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088152317, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 680960907294180931, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521800319598520120, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.467
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521800319598520120, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2797254874935175232, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 37dd4ea847d9b9f438592002452cad10,
+      objectReference: {fileID: 21300000, guid: 4efb5b63a00bd6545af5be02e949446c,
         type: 3}
-    - target: {fileID: 5940629589274181301, guid: ea46f212c1384bb438ce95471a1c7018,
+    - target: {fileID: 2797254874935175232, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
-      propertyPath: GameOverEarth
-      value: 
-      objectReference: {fileID: 448565799}
-    - target: {fileID: 5940629589274181301, guid: ea46f212c1384bb438ce95471a1c7018,
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797254874935175232, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
-      propertyPath: GameOverStress
-      value: 
-      objectReference: {fileID: 1210179365}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797254874935175232, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756279518868551304, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.467
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756279518868551304, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6756279520512724089, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_Pivot.x
@@ -391,6 +419,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756279520635707598, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.467
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756279520635707598, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}

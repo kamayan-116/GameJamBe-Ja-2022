@@ -13,6 +13,8 @@ public class S_JD_GameManager : MonoBehaviour
     public int TreeNumber = 0;
     public float speedStress = 1;
     public float speedTree = 1;
+    public float speedStamine = 1;
+    public float Stamina = 100f;
 
     private float Timer = 0;
 
@@ -40,6 +42,8 @@ public class S_JD_GameManager : MonoBehaviour
             SetEarthValue();
 
             SetTimer();
+
+            SetStamina();
 
             CheckDeath();
         }
@@ -93,6 +97,16 @@ public class S_JD_GameManager : MonoBehaviour
         else if (StressValue <= 0)
         {
             GameOver(1);
+        }
+    }
+
+    public void SetStamina()
+    {
+        if (Stamina <= 0) Stamina = 0;
+        else
+        {
+            Stamina = Stamina - (1 * Time.deltaTime * speedStamine);
+            S_JD_CanvasManager.Instance.SetValueStamina(Stamina);
         }
     }
 }
