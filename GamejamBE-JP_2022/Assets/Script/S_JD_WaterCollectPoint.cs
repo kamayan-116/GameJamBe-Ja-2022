@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class S_JD_WaterCollectPoint : S_JD_Interact
 {
+    public float TimeBetweenCollect = 2f;
     protected override void Interaction()
     {
+        ReadyToCollect = false;
         print("Water = " + S_JD_Player.Instance.WaterValue);
+        StartCoroutine(Latence());
+    }
+
+    IEnumerator Latence()
+    {
+        yield return new WaitForSeconds(TimeBetweenCollect);
+        ReadyToCollect = true;
     }
 }

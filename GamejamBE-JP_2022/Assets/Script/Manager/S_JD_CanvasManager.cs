@@ -5,12 +5,23 @@ using UnityEngine.UI;
 
 public class S_JD_CanvasManager : MonoBehaviour
 {
+    public static S_JD_CanvasManager Instance;
+
     [SerializeField] Slider earthSlider;
     [SerializeField] Slider playerSlider;
     [SerializeField] Text waterText;
     [SerializeField] Text treeText;
+    public GameObject HUD;
+    public GameObject MiniGamePanel;
+    public Animator SmahButton;
 
     public Animator DeathFade;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this);
+    }
 
     void Start()
     {
@@ -50,5 +61,10 @@ public class S_JD_CanvasManager : MonoBehaviour
     public void SetValueTree(int _value)
     {
         treeText.text = "×" + _value;
+    }
+
+    public void SetActiveHUD(bool _active)
+    {
+        HUD.SetActive(_active);
     }
 }
