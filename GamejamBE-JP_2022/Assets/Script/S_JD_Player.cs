@@ -63,6 +63,15 @@ public class S_JD_Player : MonoBehaviour
             LaunchMiniGame();
     }
 
+    public void GiveWater()
+    {
+        /*if (WaterValue > 0)
+        {
+            WaterValue -= 1;
+            S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+        }*/
+    }
+
     public void Interact(string _action)
     {
         if(_action == "GetWater")
@@ -76,6 +85,10 @@ public class S_JD_Player : MonoBehaviour
         else if(_action == "GetBath")
         {
             GetBath();
+        }
+        else if (_action == "GiveWater")
+        {
+            GiveWater();
         }
         else
         {

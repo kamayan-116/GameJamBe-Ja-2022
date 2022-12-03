@@ -10,6 +10,11 @@ public class S_JD_Tree : S_JD_Interact
 
     private GameObject Parent;
 
+    private void Start()
+    {
+        interactionType = "GetWood";
+    }
+
     protected override void Interaction()
     {
         StartCoroutine(LatenceWoodCutting());
@@ -28,7 +33,7 @@ public class S_JD_Tree : S_JD_Interact
     IEnumerator DeadTimer()
     {
         yield return new WaitForSeconds(10f);
-        Parent.GetComponent<S_JD_TreeSpawner>().LatenceGrowingTree();
+        StartCoroutine(Parent.GetComponent<S_JD_TreeSpawner>().LatenceGrowingTree());
         Destroy(gameObject);
     }
 

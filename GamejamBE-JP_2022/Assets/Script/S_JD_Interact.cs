@@ -5,6 +5,7 @@ using UnityEngine;
 public class S_JD_Interact : MonoBehaviour
 {
     private bool canBeActivate = false;
+    [HideInInspector]
     public string interactionType = "GetWater";
     [HideInInspector]
     public bool ReadyToCollect = true;

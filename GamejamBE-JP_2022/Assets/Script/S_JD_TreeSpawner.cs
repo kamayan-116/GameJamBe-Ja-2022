@@ -8,12 +8,13 @@ public class S_JD_TreeSpawner : MonoBehaviour
     public GameObject[] TreeList;
     public GameObject GrowTree;
     private GameObject ChildTree;
-    public float[] RandomTimeToSpawn = { 10f, 45f };
+    public float[] RandomTimeToSpawn = { 2f, 3f };
     void Start()
     {
         if(InGrowMode)
         {
-            Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
+            ChildTree = Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
+            ChildTree.GetComponent<S_JD_GrowTree>().SetParent(gameObject);
         }
         else
         {
@@ -24,13 +25,14 @@ public class S_JD_TreeSpawner : MonoBehaviour
 
     private void GrowingTree()
     {
-        Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
-
+        ChildTree = Instantiate(GrowTree, gameObject.transform.position, gameObject.transform.rotation);
+        ChildTree.GetComponent<S_JD_GrowTree>().SetParent(gameObject);
     }
 
     public IEnumerator LatenceGrowingTree()
     {
-        yield return new WaitForSeconds(Random.Range(RandomTimeToSpawn[0], RandomTimeToSpawn[1]));
+        float _Waitingtime = Random.Range(RandomTimeToSpawn[0], RandomTimeToSpawn[1]);
         GrowingTree();
+        yield return new WaitForSeconds(_Waitingtime);
     }
 }

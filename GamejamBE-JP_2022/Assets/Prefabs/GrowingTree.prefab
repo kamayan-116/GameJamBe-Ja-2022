@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5849432767810787449}
+  - component: {fileID: 4329518111415497649}
+  - component: {fileID: 3343378935468093413}
   m_Layer: 0
   m_Name: GrowingTree
   m_TagString: Untagged
@@ -32,6 +34,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4329518111415497649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437556023665385365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9348f002d26f33468389e6be85741b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionType: GetWater
+  ReadyToCollect: 1
+  TreeList:
+  - {fileID: 6943014905384218018, guid: fa03f914023f9b54490e8e2bbc3732bc, type: 3}
+  - {fileID: 7524806864107727685, guid: 50d830c6a6061c24fae5868304c72bcc, type: 3}
+  - {fileID: 3176900630756269925, guid: ead9ecadc68daf144bcdc225934ffc85, type: 3}
+--- !u!65 &3343378935468093413
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437556023665385365}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &107044045651173
 PrefabInstance:
   m_ObjectHideFlags: 0

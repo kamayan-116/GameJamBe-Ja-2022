@@ -5,10 +5,14 @@ using UnityEngine;
 public class S_JD_WaterCollectPoint : S_JD_Interact
 {
     public float TimeBetweenCollect = 2f;
+
+    private void Start()
+    {
+        interactionType = "GetWater";
+    }
     protected override void Interaction()
     {
         ReadyToCollect = false;
-        print("Water = " + S_JD_Player.Instance.WaterValue);
         StartCoroutine(Latence());
     }
 
