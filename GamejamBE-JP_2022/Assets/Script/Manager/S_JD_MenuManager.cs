@@ -17,7 +17,7 @@ public class S_JD_MenuManager : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync(1);
         //SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
-        StartCoroutine(LoadSceneAsync(true));
+        StartCoroutine(S_JD_GameManager.Instance.LoadSceneAsync(true));
     }
 
     public void BackToMainMenu()
@@ -38,5 +38,6 @@ public class S_JD_MenuManager : MonoBehaviour
         AsyncOperation asyncOp = SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         while (!asyncOp.isDone) yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
+        print(SceneManager.GetActiveScene());
     }
 }
