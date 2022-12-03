@@ -11,6 +11,11 @@ public class S_JD_CanvasManager : MonoBehaviour
     [SerializeField] Slider playerSlider;
     [SerializeField] Text waterText;
     [SerializeField] Text treeText;
+    [SerializeField] GameObject pauseMenuPanel;
+    [SerializeField] GameObject endingPanel;
+    [SerializeField] Text playTimeText;
+    [SerializeField] Image clearImage;
+    [SerializeField] Sprite[] clearSprite;
     public GameObject HUD;
     public GameObject MiniGamePanel;
     public Animator SmahButton;
@@ -82,5 +87,32 @@ public class S_JD_CanvasManager : MonoBehaviour
             nowValue = slider.value;
             yield return null;
         }
+    }
+
+    public void GoToPause()
+    {
+        HUD.SetActive(false);
+        pauseMenuPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void BackToGame()
+    {
+        HUD.SetActive(true);
+        pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void BackToTitle()
+    {
+        pauseMenuPanel.SetActive(false);
+    }
+
+    public void EndingPanel(float _clearTime, int _clearCause)
+    {
+        HUD.SetActive(false);
+        endingPanel.SetActive(true);
+        playTimeText.text = "PlayTime：" + _clearTime;
+        clearImage.sprite = clearSprite[_clearCause];
     }
 }
