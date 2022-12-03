@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class S_JD_CanvasManager : MonoBehaviour
 {
+    #region 変数宣言
     public static S_JD_CanvasManager Instance;
 
     [SerializeField] Slider earthSlider;
@@ -21,6 +23,8 @@ public class S_JD_CanvasManager : MonoBehaviour
     public Animator SmahButton;
 
     public Animator DeathFade;
+    #endregion
+
 
     private void Awake()
     {
@@ -58,6 +62,7 @@ public class S_JD_CanvasManager : MonoBehaviour
        StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
     }
 
+    // Argument(_value) is 0~100
     public void SetValueWater(int _value)
     {
         waterText.text = "×" + _value;
@@ -73,6 +78,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         HUD.SetActive(_active);
     }
 
+    // Coroutine function to dynamically move slider values
     private IEnumerator SliderValueChange(Slider slider, float nowValue, float targetValue)
     {
         while(nowValue <= targetValue)
@@ -89,6 +95,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         }
     }
 
+    // Function of the button to go to the pause menu
     public void GoToPause()
     {
         HUD.SetActive(false);
@@ -96,6 +103,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         Time.timeScale = 0;
     }
 
+    // Function of the button to return to the game in the pause
     public void BackToGame()
     {
         HUD.SetActive(true);
@@ -103,11 +111,15 @@ public class S_JD_CanvasManager : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    // Function of the button to return to the title in the pause
     public void BackToTitle()
     {
         pauseMenuPanel.SetActive(false);
+        endingPanel.SetActive(false);
+        SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
     }
 
+    // Ending Panel Functions
     public void EndingPanel(float _clearTime, int _clearCause)
     {
         HUD.SetActive(false);
