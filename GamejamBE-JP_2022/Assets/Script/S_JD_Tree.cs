@@ -24,10 +24,12 @@ public class S_JD_Tree : S_JD_Interact
 
     IEnumerator LatenceWoodCutting()
     {
+        S_JD_Player.Instance.CutMode = true;
         S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
         yield return new WaitForSeconds(TimeOfCuttingWood);
         UpTreeAnim.SetTrigger("Fall");
+        S_JD_Player.Instance.CutMode = false;
         S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_GameManager.Instance.TreeNumber -= 1;
         StartCoroutine(DeadTimer());

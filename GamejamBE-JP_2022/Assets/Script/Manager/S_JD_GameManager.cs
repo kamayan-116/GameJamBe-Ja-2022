@@ -12,7 +12,7 @@ public class S_JD_GameManager : MonoBehaviour
     public bool InGame = false;
     public int TreeNumber = 0;
     public float speedStress = 0.2f;
-    public float speedTree = 1;
+    public float speedTree = 0.3f;
     public float speedStamine = 1;
     public float Stamina = 100f;
 
@@ -98,7 +98,7 @@ public class S_JD_GameManager : MonoBehaviour
     public void SetEarthValue()
     {
         if (EarthValue < 100)
-            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedStress);
+            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedTree);
         else
             EarthValue = 100;
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
@@ -130,7 +130,9 @@ public class S_JD_GameManager : MonoBehaviour
         {
             Stamina = 0;
         }
-        else
+        Stamina = Stamina - (1 * Time.deltaTime * speedStamine);
+        S_JD_CanvasManager.Instance.SetValueStamina(Stamina);
+        /*else
         {
             if(Stamina <= 10)
             {
@@ -145,8 +147,7 @@ public class S_JD_GameManager : MonoBehaviour
             {
                 S_JD_Player.Instance.SetInactiveSmallSleep();
             }
-            Stamina = Stamina - (1 * Time.deltaTime * speedStamine);
-            S_JD_CanvasManager.Instance.SetValueStamina(Stamina);
-        }
+            
+        }*/
     }
 }

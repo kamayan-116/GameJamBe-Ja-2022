@@ -149,7 +149,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99c73da59cf84514fbb843052afe0902, type: 2}
+  - {fileID: 2100000, guid: 1121f408facb3fd48928659a2179156f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,9 +375,11 @@ MonoBehaviour:
   AvailableMouvement: 1
   SmashGameScore: 26
   Anim:
-  - {fileID: 2100000, guid: 99c73da59cf84514fbb843052afe0902, type: 2}
+  - {fileID: 2100000, guid: 1121f408facb3fd48928659a2179156f, type: 2}
   - {fileID: 2100000, guid: 373511282724daa4d99145ab82fb129d, type: 2}
   - {fileID: 2100000, guid: e73c65e9fc187684e9bcf6645cf1d6ed, type: 2}
+  - {fileID: 2100000, guid: 7ea61daf3c0f0ef4bad68fe55d96b504, type: 2}
+  CutMode: 0
   elementType: 0
 --- !u!1001 &1745733527199909888
 PrefabInstance:

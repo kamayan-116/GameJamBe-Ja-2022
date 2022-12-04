@@ -21,6 +21,7 @@ public class S_JD_Player : MonoBehaviour
     private bool InMiniGame = false;
     private int MiniGameScore = 0;
     private bool CanLaunchMiniGame = true;
+    public bool CutMode = false;
 
     public int elementType = 0;
 
@@ -45,16 +46,24 @@ public class S_JD_Player : MonoBehaviour
     {
         if (!InMiniGame && AvailableMouvement)
         {
-            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 3)
+            if (S_JD_GameManager.Instance.Stamina < 30 && S_JD_GameManager.Instance.Stamina > 10)
             {
+                SetInactiveSleep();
+                SetActiveSmallSleep();
+            }
+            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 6)
+            {
+                SetActiveSleep();
                 transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (S_JD_GameManager.Instance.Stamina/10)));
             }
-            else if (S_JD_GameManager.Instance.Stamina < 3)
+            else if (S_JD_GameManager.Instance.Stamina < 6)
             {
+                SetActiveSleep();
                 transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (0.2f)));
             }
             else
             {
+                SetInactiveSmallSleep();
                 transform.Rotate(new Vector3(0, 0, -Input.GetAxis("Horizontal") * Time.deltaTime) * speed);
             }
 
@@ -64,12 +73,29 @@ public class S_JD_Player : MonoBehaviour
             
         }
 
-        if (!AvailableMouvement)
-            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[2];
+        if (CutMode)
+        {
+            if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[3])
+                PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[3];
+        }            
+        else if (!AvailableMouvement)
+        {
+            if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[2])
+                PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[2];
+        }           
         else if (Input.GetAxis("Horizontal") != 0)
-            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[1];
+        {
+            if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[1])
+            {
+                PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[1];
+            }
+        }           
         else
-            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[0];
+        {
+            if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[0])
+                PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[0];
+        }
+            
 
         SetElement();
 
@@ -199,7 +225,7 @@ public class S_JD_Player : MonoBehaviour
         MiniGameScore = 0;
         InMiniGame = false;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
-        S_JD_GameManager.Instance.StressValue += 30;
+        S_JD_GameManager.Instance.StressValue += 40;
 
         yield return new WaitForSeconds(_delay);
         CanLaunchMiniGame = true;
