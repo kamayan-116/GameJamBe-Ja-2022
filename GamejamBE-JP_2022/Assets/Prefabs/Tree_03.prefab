@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree_03
       objectReference: {fileID: 0}
+    - target: {fileID: 6943014905384218019, guid: fa03f914023f9b54490e8e2bbc3732bc,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.06
+      objectReference: {fileID: 0}
     - target: {fileID: 6943014905384218020, guid: fa03f914023f9b54490e8e2bbc3732bc,
         type: 3}
       propertyPath: interactionType

@@ -17,6 +17,7 @@ public class S_JD_GameManager : MonoBehaviour
     public float Stamina = 100f;
 
     private float Timer = 0;
+    public float actualSpeedtree = 0;
 
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class S_JD_GameManager : MonoBehaviour
     {
         if(LoadAtMenu)
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
+        
     }
 
     // Update is called once per frame
@@ -80,15 +82,15 @@ public class S_JD_GameManager : MonoBehaviour
         Stamina = 100f;
         Timer = 0;
         speedStress = 0.2f;
+        actualSpeedtree = speedTree;
 
         InGame = true;
-        S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
     }
 
     public void SetStressValue()
     {
-        if (StressValue < 100)
+        if (StressValue <= 100)
             StressValue = StressValue - (1 * Time.deltaTime * speedStress);
         else
             StressValue = 100;
@@ -97,8 +99,8 @@ public class S_JD_GameManager : MonoBehaviour
 
     public void SetEarthValue()
     {
-        if (EarthValue < 100)
-            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedTree);
+        if (EarthValue <= 100)
+            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * actualSpeedtree);
         else
             EarthValue = 100;
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
@@ -107,6 +109,11 @@ public class S_JD_GameManager : MonoBehaviour
     public void GameOver(int _cause)
     {
         int time = (int)Mathf.Round(Timer) / 60;
+        GameObject[] Traker = GameObject.FindGameObjectsWithTag("Finish");
+        foreach (GameObject obj in Traker)
+        {
+            Destroy(obj);
+        }
         S_JD_CanvasManager.Instance.EndingPanel(time, _cause);
         S_JD_Player.Instance.AvailableMouvement = false;
         InGame = false;

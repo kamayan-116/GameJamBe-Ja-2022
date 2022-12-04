@@ -16,8 +16,6 @@ public class S_JD_CanvasManager : MonoBehaviour
     [SerializeField] GameObject pauseMenuPanel;
     [SerializeField] GameObject endingPanel;
     [SerializeField] Text playTimeText;
-    [SerializeField] Image clearImage;
-    [SerializeField] Sprite[] clearSprite;
     [SerializeField] GameObject pressTextObj;
     public GameObject HUD;
     public GameObject MiniGamePanel;
@@ -131,12 +129,18 @@ public class S_JD_CanvasManager : MonoBehaviour
     public void BackToTitle()
     {
         //DeathFading();
+        Time.timeScale = 1f;
         S_JD_GameManager.Instance.InGame = false;
         pauseMenuPanel.SetActive(false);
         endingPanel.SetActive(false);
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(2);
         RemoveEndingPanel();
+        GameObject[] DeleteTree = GameObject.FindGameObjectsWithTag("Respawn");
+        foreach (GameObject obj in DeleteTree)
+        {
+            Destroy(obj);
+        }
     }
 
     // Ending Panel Functions

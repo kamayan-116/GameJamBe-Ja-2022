@@ -7,6 +7,7 @@ public class S_JD_MenuManager : MonoBehaviour
 {
     public GameObject MainMenuPanel;
     public GameObject ControlsPanel;
+    public AudioSource BouttonSon;
 
     public void ExitGame()
     {
@@ -40,5 +41,10 @@ public class S_JD_MenuManager : MonoBehaviour
         while (!asyncOp.isDone) yield return null;
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
         print(SceneManager.GetActiveScene());
+    }
+
+    public void PlayButtonSound()
+    {
+        BouttonSon.Play();
     }
 }

@@ -173,9 +173,10 @@ MonoBehaviour:
   InGame: 0
   TreeNumber: 0
   speedStress: 1
-  speedTree: 1
-  speedStamine: 1
+  speedTree: 0.3
+  speedStamine: 2
   Stamina: 100
+  actualSpeedtree: 0
 --- !u!1001 &1075095523
 PrefabInstance:
   m_ObjectHideFlags: 0

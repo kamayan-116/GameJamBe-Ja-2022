@@ -11,7 +11,6 @@ public class S_KK_TargetIndicator : MonoBehaviour
     private Camera mainCamera;
     private RectTransform rectTransform;
 
-    // Start is called before the first frame update
     void Start()
     {
         mainCamera = Camera.main;

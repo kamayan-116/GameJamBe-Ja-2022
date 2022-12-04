@@ -18,8 +18,11 @@ public class S_JD_Tree : S_JD_Interact
 
     protected override void Interaction()
     {
-        StartCoroutine(LatenceWoodCutting());
-        ReadyToCollect = false;
+        if (S_JD_Player.Instance.WoodValue < 5)
+        {
+            StartCoroutine(LatenceWoodCutting());
+            ReadyToCollect = false;
+        }       
     }
 
     IEnumerator LatenceWoodCutting()

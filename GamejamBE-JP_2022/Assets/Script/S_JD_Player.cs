@@ -20,10 +20,15 @@ public class S_JD_Player : MonoBehaviour
 
     private bool InMiniGame = false;
     private int MiniGameScore = 0;
-    private bool CanLaunchMiniGame = true;
+    public bool CanLaunchMiniGame = true;
     public bool CutMode = false;
 
     public int elementType = 0;
+    public bool RecoltWater = false;
+
+    public AudioSource CuttingWood;
+    public AudioSource Walk1;
+    public AudioSource Walk2;
 
     private void Awake()
     {
@@ -33,6 +38,7 @@ public class S_JD_Player : MonoBehaviour
 
     void Start()
     {
+        S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_CanvasManager.Instance.SetActiveHUD(true);
         S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
@@ -50,8 +56,9 @@ public class S_JD_Player : MonoBehaviour
             {
                 SetInactiveSleep();
                 SetActiveSmallSleep();
+                transform.Rotate(new Vector3(0, 0, -Input.GetAxis("Horizontal") * Time.deltaTime) * speed);
             }
-            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 6)
+            else if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 6)
             {
                 SetActiveSleep();
                 transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (S_JD_GameManager.Instance.Stamina/10)));
@@ -59,7 +66,7 @@ public class S_JD_Player : MonoBehaviour
             else if (S_JD_GameManager.Instance.Stamina < 6)
             {
                 SetActiveSleep();
-                transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (0.2f)));
+                transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (0.6f)));
             }
             else
             {
@@ -68,7 +75,10 @@ public class S_JD_Player : MonoBehaviour
             }
 
             if (Input.GetAxis("Horizontal") != 0)
+            {
                 PlayerCharacter.transform.localScale = new Vector3((Input.GetAxis("Horizontal") * (10 / (Mathf.Abs(Input.GetAxis("Horizontal") * 10)))) * 2, 2, 2);
+                PlaySoundWalk();
+            }
 
             
         }
@@ -107,8 +117,9 @@ public class S_JD_Player : MonoBehaviour
 
     public void GetWater()
     {
-        if(WaterValue < 5)
+        if(WaterValue < 5 && !RecoltWater)
         {
+            RecoltWater = true;
             if (elementType == 0)
             {
                 WaterValue += 2;
@@ -120,7 +131,11 @@ public class S_JD_Player : MonoBehaviour
                 S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
             }
         }
-        WaterValue = 5;
+        if (WaterValue > 5)
+        {
+            WaterValue = 5;
+            S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+        }
     }
 
     public void GetWood()
@@ -138,16 +153,18 @@ public class S_JD_Player : MonoBehaviour
                 WoodValue += 1;
                 S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
             }
+            CuttingWood.Play();
         }
-        else
+        if (WoodValue > 5)
         {
             WoodValue = 5;
+            S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
         }
     }
 
     public void GetBath()
     {
-        if (CanLaunchMiniGame && WoodValue >= 3)
+        if (CanLaunchMiniGame && WoodValue >= 3 && WaterValue >= 1)
             LaunchMiniGame();       
     }
 
@@ -164,7 +181,8 @@ public class S_JD_Player : MonoBehaviour
     {
         S_JD_GameManager.Instance.Stamina = 100;
         GambleElement();
-
+        SetInactiveSmallSleep();
+        SetInactiveSleep();
     }
 
     public void Interact(string _action)
@@ -225,8 +243,8 @@ public class S_JD_Player : MonoBehaviour
         MiniGameScore = 0;
         InMiniGame = false;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
-        S_JD_GameManager.Instance.StressValue += 40;
-
+        S_JD_GameManager.Instance.StressValue += 30;
+        S_JD_GameManager.Instance.actualSpeedtree = S_JD_GameManager.Instance.speedTree;
         yield return new WaitForSeconds(_delay);
         CanLaunchMiniGame = true;
     }
@@ -237,8 +255,11 @@ public class S_JD_Player : MonoBehaviour
         InMiniGame = true;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(true);
         WoodValue -= 3;
+        WaterValue -= 1;
+        S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-        S_JD_GameManager.Instance.EarthValue -= 30;
+        S_JD_GameManager.Instance.EarthValue -= 40;
+        S_JD_GameManager.Instance.actualSpeedtree = 0f;
     }
 
     public void SetElement()
@@ -246,23 +267,20 @@ public class S_JD_Player : MonoBehaviour
         if (elementType == 0)
         {
             //Water Element
-            print("Water");
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.59f, 0.78f, 0.90f));
-            print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
+            //print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
         }
         else if (elementType == 1)
         {
             //FireElement
-            print("Fire");
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.91f, 0.68f, 0.01f));
-            print(PlayerCharacter.GetComponent<MeshRenderer>().material);
+            //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else if (elementType == 2)
         {
             //GreenElement
-            print("Green");
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.74f, 0.75f, 0.44f));
-            print(PlayerCharacter.GetComponent<MeshRenderer>().material);
+            //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else
             print("Error in the Element set");
@@ -298,5 +316,23 @@ public class S_JD_Player : MonoBehaviour
     public void SetInactiveSmallSleep()
     {
         smallsleepParticle.SetActive(false);
+    }
+
+    public void PlaySoundWalk()
+    {
+        if (!Walk1.isPlaying && !Walk2.isPlaying)
+        {
+            int index = Random.Range(0, 1);
+            if (index == 0)
+            {
+                Walk1.pitch = Random.Range(1f, 1.3f);
+                Walk1.Play();
+            }
+            else if (index == 1)
+            {
+                Walk2.pitch = Random.Range(1f, 1.3f);
+                Walk2.Play();
+            }
+        }
     }
 }
