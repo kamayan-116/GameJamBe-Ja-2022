@@ -59,7 +59,10 @@ public class S_JD_GameManager : MonoBehaviour
 
     private void SetSpeedStress()
     {
-        speedStress +=  Time.deltaTime / 100f;
+        if (speedStress < 0.3)
+        {
+            speedStress += Time.deltaTime / 100f;
+        }
 
         SetStressValue();
 

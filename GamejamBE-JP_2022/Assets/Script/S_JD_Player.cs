@@ -29,6 +29,8 @@ public class S_JD_Player : MonoBehaviour
     public AudioSource CuttingWood;
     public AudioSource Walk1;
     public AudioSource Walk2;
+    public ParticleSystem NinjaSmoke;
+    public AudioSource NinjaSoundEffect;
 
     private void Awake()
     {
@@ -52,7 +54,7 @@ public class S_JD_Player : MonoBehaviour
     {
         if (!InMiniGame && AvailableMouvement)
         {
-            if (S_JD_GameManager.Instance.Stamina < 30 && S_JD_GameManager.Instance.Stamina > 10)
+            if (S_JD_GameManager.Instance.Stamina < 40 && S_JD_GameManager.Instance.Stamina > 10)
             {
                 SetInactiveSleep();
                 SetActiveSmallSleep();
@@ -183,6 +185,9 @@ public class S_JD_Player : MonoBehaviour
         GambleElement();
         SetInactiveSmallSleep();
         SetInactiveSleep();
+        NinjaSmoke.Play();
+        NinjaSoundEffect.Play();
+        StartCoroutine(SleepingLatence());
     }
 
     public void Interact(string _action)
@@ -334,5 +339,12 @@ public class S_JD_Player : MonoBehaviour
                 Walk2.Play();
             }
         }
+    }
+
+    IEnumerator SleepingLatence()
+    {
+        AvailableMouvement = false;
+        yield return new WaitForSeconds(0.5f);
+        AvailableMouvement = true;
     }
 }
