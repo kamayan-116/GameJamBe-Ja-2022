@@ -18,6 +18,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     [SerializeField] Text playTimeText;
     [SerializeField] Image clearImage;
     [SerializeField] Sprite[] clearSprite;
+    [SerializeField] GameObject pressTextObj;
     public GameObject HUD;
     public GameObject MiniGamePanel;
     public Animator SmahButton;
@@ -166,5 +167,15 @@ public class S_JD_CanvasManager : MonoBehaviour
     public void RemoveEndingPanel()
     {
         endingPanel.SetActive(false);
+    }
+
+    public void SetActivePressE()
+    {
+        pressTextObj.SetActive(true);
+    }
+
+    public void SetInactivePressE()
+    {
+        pressTextObj.SetActive(false);
     }
 }

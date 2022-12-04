@@ -734,6 +734,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallSmokeParticle
       objectReference: {fileID: 0}
+    - target: {fileID: 7819293890799094083, guid: 24ba8b17831d04840a65d3a229c62edd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7819293890799094086, guid: 24ba8b17831d04840a65d3a229c62edd,
         type: 3}
       propertyPath: m_RootOrder
