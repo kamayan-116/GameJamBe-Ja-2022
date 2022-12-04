@@ -13,10 +13,13 @@ public class S_JD_Player : MonoBehaviour
     public int WoodValue = 0;
     [HideInInspector]
     public bool AvailableMouvement = true;
+    public int SmashGameScore = 26;
 
     private bool InMiniGame = false;
     private int MiniGameScore = 0;
     private bool CanLaunchMiniGame = true;
+
+    public int elementType = 0;
 
     private void Awake()
     {
@@ -27,6 +30,9 @@ public class S_JD_Player : MonoBehaviour
     void Start()
     {
         S_JD_CanvasManager.Instance.SetActiveHUD(true);
+        S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+        S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+        SetElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
     }
 
@@ -57,8 +63,16 @@ public class S_JD_Player : MonoBehaviour
     {
         if(WaterValue < 5)
         {
-            WaterValue += 1;
-            S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+            if (elementType == 0)
+            {
+                WaterValue += 2;
+                S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+            }
+            else
+            {
+                WaterValue += 1;
+                S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+            }
         }       
     }
 
@@ -66,8 +80,17 @@ public class S_JD_Player : MonoBehaviour
     {
         if(WoodValue < 5)
         {
-            WoodValue += 1;
-            S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+
+            if (elementType == 2)
+            {
+                WoodValue += 2;
+                S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+            }
+            else
+            {
+                WoodValue += 1;
+                S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+            }
         }
     }
 
@@ -89,6 +112,8 @@ public class S_JD_Player : MonoBehaviour
     public void Sleep()
     {
         S_JD_GameManager.Instance.Stamina = 100;
+        SetElement();
+
     }
 
     public void Interact(string _action)
@@ -127,10 +152,21 @@ public class S_JD_Player : MonoBehaviour
             //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
         }
-        if (MiniGameScore == 10)
+        if (elementType == 1)
         {
-            StartCoroutine(ExitMiniGameLatence(2f));
+            if (MiniGameScore == Mathf.Floor(SmashGameScore * 0.5f))
+            {
+                StartCoroutine(ExitMiniGameLatence(2f));
+            }
         }
+        else
+        {
+            if (MiniGameScore == SmashGameScore)
+            {
+                StartCoroutine(ExitMiniGameLatence(2f));
+            }
+        }
+
     }
 
     IEnumerator ExitMiniGameLatence(float _delay)
@@ -154,6 +190,32 @@ public class S_JD_Player : MonoBehaviour
         S_JD_GameManager.Instance.EarthValue -= 30;
     }
 
-    
+    public void SetElement()
+    {
+        elementType = Random.Range(0, 3);
+        if (elementType == 0)
+        {
+            //Water Element
+            print("Water");
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.13f, 0.52f, 0.77f));
+            print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
+        }
+        else if (elementType == 1)
+        {
+            //FireElement
+            print("Fire");
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.75f, 0f, 0.01f));
+            print(PlayerCharacter.GetComponent<MeshRenderer>().material);
+        }
+        else if (elementType == 2)
+        {
+            //GreenElement
+            print("Green");
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0f, 0.75f, 0f));
+            print(PlayerCharacter.GetComponent<MeshRenderer>().material);
+        }
+        else
+            print("Error in the Element set");
+    }
 
 }
