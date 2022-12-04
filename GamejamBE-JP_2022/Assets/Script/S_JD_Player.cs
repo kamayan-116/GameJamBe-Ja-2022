@@ -7,6 +7,7 @@ public class S_JD_Player : MonoBehaviour
     public static S_JD_Player Instance;
 
     public GameObject sleepParticle;
+    public GameObject smallsleepParticle;
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
@@ -37,6 +38,7 @@ public class S_JD_Player : MonoBehaviour
         GambleElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
         sleepParticle.SetActive(false);
+        smallsleepParticle.SetActive(false);
     }
 
     void Update()
@@ -252,8 +254,23 @@ public class S_JD_Player : MonoBehaviour
         }
     }
 
-    public void SleepParticle()
+    public void SetActiveSleep()
     {
         sleepParticle.SetActive(true);
+    }
+
+    public void SetInactiveSleep()
+    {
+        sleepParticle.SetActive(false);
+    }
+
+    public void SetActiveSmallSleep()
+    {
+        smallsleepParticle.SetActive(true);
+    }
+
+    public void SetInactiveSmallSleep()
+    {
+        smallsleepParticle.SetActive(false);
     }
 }
