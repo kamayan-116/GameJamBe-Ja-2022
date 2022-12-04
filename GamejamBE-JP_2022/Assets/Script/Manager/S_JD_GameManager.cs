@@ -66,6 +66,7 @@ public class S_JD_GameManager : MonoBehaviour
     {
         EarthValue = 50f;
         StressValue = 50f;
+        Stamina = 100f;
 
         InGame = true;
         S_JD_Player.Instance.AvailableMouvement = true;
