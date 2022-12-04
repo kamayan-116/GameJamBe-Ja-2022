@@ -148,8 +148,8 @@ public class S_JD_CanvasManager : MonoBehaviour
 
         if(_clearCause == 0)
         {
-            GameOverEarth.SetActive(false);
-            GameOverStress.SetActive(true);
+            GameOverEarth.SetActive(true);
+            GameOverStress.SetActive(false);
         }
         else if (_clearCause == 1)
         {

@@ -92,7 +92,7 @@ public class S_JD_GameManager : MonoBehaviour
 
     public void GameOver(int _cause)
     {
-        S_JD_CanvasManager.Instance.EndingPanel(Timer, 0);
+        S_JD_CanvasManager.Instance.EndingPanel(Timer, _cause);
         S_JD_Player.Instance.AvailableMouvement = false;
         InGame = false;
     }
