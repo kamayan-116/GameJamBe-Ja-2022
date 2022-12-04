@@ -14,6 +14,7 @@ public class S_JD_Player : MonoBehaviour
     [HideInInspector]
     public bool AvailableMouvement = true;
     public int SmashGameScore = 26;
+    public Material[] Anim;
 
     private bool InMiniGame = false;
     private int MiniGameScore = 0;
@@ -32,7 +33,7 @@ public class S_JD_Player : MonoBehaviour
         S_JD_CanvasManager.Instance.SetActiveHUD(true);
         S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-        SetElement();
+        GambleElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
     }
 
@@ -52,7 +53,22 @@ public class S_JD_Player : MonoBehaviour
             {
                 transform.Rotate(new Vector3(0, 0, -Input.GetAxis("Horizontal") * Time.deltaTime) * speed);
             }
+
+            if (Input.GetAxis("Horizontal") != 0)
+                PlayerCharacter.transform.localScale = new Vector3((Input.GetAxis("Horizontal") * (10 / (Mathf.Abs(Input.GetAxis("Horizontal") * 10)))) * 2, 2, 2);
+
+            
         }
+
+        if (!AvailableMouvement)
+            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[2];
+        else if (Input.GetAxis("Horizontal") != 0)
+            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[1];
+        else
+            PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[0];
+
+        SetElement();
+
         if (InMiniGame)
         {
             SmashButton();
@@ -112,7 +128,7 @@ public class S_JD_Player : MonoBehaviour
     public void Sleep()
     {
         S_JD_GameManager.Instance.Stamina = 100;
-        SetElement();
+        GambleElement();
 
     }
 
@@ -192,7 +208,6 @@ public class S_JD_Player : MonoBehaviour
 
     public void SetElement()
     {
-        elementType = Random.Range(0, 3);
         if (elementType == 0)
         {
             //Water Element
@@ -218,4 +233,15 @@ public class S_JD_Player : MonoBehaviour
             print("Error in the Element set");
     }
 
+    public void GambleElement()
+    {
+        int previousElement = elementType;
+        elementType = Random.Range(0, 3);
+        if (previousElement == elementType)
+            GambleElement();
+        else
+        {
+            SetElement();
+        }
+    }
 }
