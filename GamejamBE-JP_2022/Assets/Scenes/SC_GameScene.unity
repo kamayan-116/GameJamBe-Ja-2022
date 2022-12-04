@@ -957,6 +957,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1745733526711926640, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: sleepParticle
+      value: 
+      objectReference: {fileID: 1745733526136505001}
     - target: {fileID: 1745733526711926641, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
         type: 3}
       propertyPath: m_RootOrder
@@ -1019,3 +1024,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933, type: 3}
+--- !u!1 &1745733526136505001 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2877341629159194220, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+    type: 3}
+  m_PrefabInstance: {fileID: 1745733526136505000}
+  m_PrefabAsset: {fileID: 0}

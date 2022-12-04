@@ -127,10 +127,13 @@ public class S_JD_GameManager : MonoBehaviour
         if (Stamina <= 0)
         {
             Stamina = 0;
-            //S_JD_Player.Instance.SleepParticle();
         }
         else
         {
+            if(Stamina <= 30)
+            {
+                S_JD_Player.Instance.SleepParticle();
+            }
             Stamina = Stamina - (1 * Time.deltaTime * speedStamine);
             S_JD_CanvasManager.Instance.SetValueStamina(Stamina);
         }

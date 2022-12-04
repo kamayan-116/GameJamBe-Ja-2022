@@ -6,6 +6,7 @@ public class S_JD_Player : MonoBehaviour
 {
     public static S_JD_Player Instance;
 
+    public GameObject sleepParticle;
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
@@ -35,6 +36,7 @@ public class S_JD_Player : MonoBehaviour
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
         GambleElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
+        sleepParticle.SetActive(false);
     }
 
     void Update()
@@ -243,5 +245,10 @@ public class S_JD_Player : MonoBehaviour
         {
             SetElement();
         }
+    }
+
+    public void SleepParticle()
+    {
+        sleepParticle.SetActive(true);
     }
 }
