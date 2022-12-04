@@ -197,21 +197,21 @@ public class S_JD_Player : MonoBehaviour
         {
             //Water Element
             print("Water");
-            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.13f, 0.52f, 0.77f));
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.59f, 0.78f, 0.90f));
             print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
         }
         else if (elementType == 1)
         {
             //FireElement
             print("Fire");
-            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.75f, 0f, 0.01f));
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.91f, 0.68f, 0.01f));
             print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else if (elementType == 2)
         {
             //GreenElement
             print("Green");
-            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0f, 0.75f, 0f));
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.74f, 0.75f, 0.44f));
             print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else
