@@ -11,13 +11,12 @@ public class S_JD_GameManager : MonoBehaviour
     public float StressValue = 50f;
     public bool InGame = false;
     public int TreeNumber = 0;
-    public float speedStress = 1;
+    public float speedStress = 0.2f;
     public float speedTree = 1;
     public float speedStamine = 1;
     public float Stamina = 100f;
 
     private float Timer = 0;
-
 
     private void Awake()
     {
@@ -37,11 +36,13 @@ public class S_JD_GameManager : MonoBehaviour
     {
         if (InGame)
         {
-            SetStressValue();
+            // SetStressValue();
 
-            SetEarthValue();
+            // SetEarthValue();
 
             SetTimer();
+
+            SetSpeedStress();
 
             SetStamina();
 
@@ -53,6 +54,16 @@ public class S_JD_GameManager : MonoBehaviour
     {
         Timer += Time.deltaTime * Time.timeScale;
     }
+
+    private void SetSpeedStress()
+    {
+        speedStress +=  Time.deltaTime / 100f;
+
+        SetStressValue();
+
+        SetEarthValue();
+    }
+
     public IEnumerator LoadSceneAsync(bool useLoadingScreen)
     {
 
@@ -67,6 +78,8 @@ public class S_JD_GameManager : MonoBehaviour
         EarthValue = 50f;
         StressValue = 50f;
         Stamina = 100f;
+        Timer = 0;
+        speedStress = 0.2f;
 
         InGame = true;
         S_JD_Player.Instance.AvailableMouvement = true;
