@@ -83,6 +83,7 @@ public class S_JD_GameManager : MonoBehaviour
 
         InGame = true;
         S_JD_Player.Instance.AvailableMouvement = true;
+        S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
     }
 
     public void SetStressValue()
@@ -105,7 +106,8 @@ public class S_JD_GameManager : MonoBehaviour
 
     public void GameOver(int _cause)
     {
-        S_JD_CanvasManager.Instance.EndingPanel(Timer, _cause);
+        int time = (int)Mathf.Round(Timer) / 60;
+        S_JD_CanvasManager.Instance.EndingPanel(time, _cause);
         S_JD_Player.Instance.AvailableMouvement = false;
         InGame = false;
     }

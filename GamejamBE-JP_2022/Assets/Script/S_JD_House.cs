@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class S_JD_House : S_JD_Interact
 {
+
     private void Start()
     {
         interactionType = "Sleep";
@@ -11,6 +12,8 @@ public class S_JD_House : S_JD_Interact
 
     protected override void Interaction()
     {
-        
+
     }
+
+
 }

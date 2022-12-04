@@ -24,7 +24,8 @@ public class S_JD_Interact : MonoBehaviour
         if (other.tag == "Player")
         {
             canBeActivate = true;
-            S_JD_CanvasManager.Instance.SetActivePressE();
+            if (ReadyToCollect)
+                S_JD_CanvasManager.Instance.SetActivePressE();
         }
     }
     private void OnTriggerExit(Collider other)

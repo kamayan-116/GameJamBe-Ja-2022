@@ -91,7 +91,8 @@ public class S_JD_Player : MonoBehaviour
                 WaterValue += 1;
                 S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
             }
-        }       
+        }
+        WaterValue = 5;
     }
 
     public void GetWood()
@@ -109,6 +110,10 @@ public class S_JD_Player : MonoBehaviour
                 WoodValue += 1;
                 S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
             }
+        }
+        else
+        {
+            WoodValue = 5;
         }
     }
 

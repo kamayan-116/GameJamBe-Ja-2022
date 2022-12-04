@@ -144,7 +144,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         HUD.SetActive(false);
         endingPanel.SetActive(true);
-        playTimeText.text = "PlayTime：" + _clearTime;
+        playTimeText.text = _clearTime + " Days";
 
         if(_clearCause == 0)
         {

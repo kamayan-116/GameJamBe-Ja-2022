@@ -26,9 +26,11 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
 
     IEnumerator LatenceWaterGathering()
     {
+        S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
         yield return new WaitForSeconds(TimeBetweenCollect);
         S_JD_Player.Instance.AvailableMouvement = true;
+        S_JD_CanvasManager.Instance.SetActivePressE();
         //S_JD_GameManager.Instance.TreeNumber -= 1;
         //StartCoroutine(DeadTimer());
     }

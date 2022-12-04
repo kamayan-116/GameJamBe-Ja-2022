@@ -24,6 +24,7 @@ public class S_JD_Tree : S_JD_Interact
 
     IEnumerator LatenceWoodCutting()
     {
+        S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
         yield return new WaitForSeconds(TimeOfCuttingWood);
         UpTreeAnim.SetTrigger("Fall");
