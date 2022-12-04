@@ -15,6 +15,7 @@ public class S_JD_MenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
+        S_JD_CanvasManager.Instance.RemoveEndingPanel();
         SceneManager.UnloadSceneAsync(1);
         //SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
         StartCoroutine(S_JD_GameManager.Instance.LoadSceneAsync(true));

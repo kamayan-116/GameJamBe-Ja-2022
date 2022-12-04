@@ -27,18 +27,18 @@ public class S_JD_Player : MonoBehaviour
     void Start()
     {
         S_JD_CanvasManager.Instance.SetActiveHUD(true);
-        PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
+        //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
     }
 
     void Update()
     {
         if (!InMiniGame && AvailableMouvement)
         {
-            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 2)
+            if (S_JD_GameManager.Instance.Stamina < 10 && S_JD_GameManager.Instance.Stamina > 3)
             {
                 transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (S_JD_GameManager.Instance.Stamina/10)));
             }
-            else if (S_JD_GameManager.Instance.Stamina < 2)
+            else if (S_JD_GameManager.Instance.Stamina < 3)
             {
                 transform.Rotate(new Vector3(0, 0, (-Input.GetAxis("Horizontal") * Time.deltaTime) * speed * (0.2f)));
             }

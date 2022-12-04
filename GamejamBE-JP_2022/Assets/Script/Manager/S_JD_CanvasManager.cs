@@ -129,7 +129,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     // Function of the button to return to the title in the pause
     public void BackToTitle()
     {
-        DeathFading();
+        //DeathFading();
         S_JD_GameManager.Instance.InGame = false;
         pauseMenuPanel.SetActive(false);
         endingPanel.SetActive(false);

@@ -9,10 +9,14 @@ public class S_JD_GrowTree : S_JD_Interact
     private bool CanBeActivate = true;
     private GameObject Parent;
     private GameObject Tree;
+    public Material[] midTreemat;
+
+    private int typeoftree;
 
     private void Start()
     {
         interactionType = "GiveWater";
+        typeoftree = Random.Range(0, 2);
     }
     protected override void Interaction()
     {
@@ -23,9 +27,14 @@ public class S_JD_GrowTree : S_JD_Interact
             S_JD_CanvasManager.Instance.SetValueWater(S_JD_Player.Instance.WaterValue);           
             if (WaterValue == 2)
             {
-                Tree = Instantiate(TreeList[Random.Range(0, TreeList.Length)], gameObject.transform.position, gameObject.transform.rotation);
+                Tree = Instantiate(TreeList[typeoftree], gameObject.transform.position, gameObject.transform.rotation);
                 Tree.GetComponent<S_JD_Tree>().SetParent(Parent);
                 Destroy(gameObject);
+            }
+            else
+            {
+                GetComponentInChildren<MeshRenderer>().material = midTreemat[typeoftree];
+                GetComponentInChildren<Transform>().localScale = new Vector3(3, 3, 3);
             }
             StartCoroutine(LatenceBetweenWater());
         }

@@ -64,20 +64,28 @@ public class S_JD_GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+        EarthValue = 50f;
+        StressValue = 50f;
+
         InGame = true;
         S_JD_Player.Instance.AvailableMouvement = true;
-
     }
 
     public void SetStressValue()
     {
-        StressValue = StressValue - (1 * Time.deltaTime * speedStress);
+        if (StressValue < 100)
+            StressValue = StressValue - (1 * Time.deltaTime * speedStress);
+        else
+            StressValue = 100;
         S_JD_CanvasManager.Instance.SetValuePlayer(StressValue);
     }
 
     public void SetEarthValue()
     {
-        EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedStress);
+        if (EarthValue < 100)
+            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * speedStress);
+        else
+            EarthValue = 100;
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
     }
 

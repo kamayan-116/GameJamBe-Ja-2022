@@ -52,6 +52,10 @@ MonoBehaviour:
   - {fileID: 6943014905384218018, guid: fa03f914023f9b54490e8e2bbc3732bc, type: 3}
   - {fileID: 7524806864107727685, guid: 50d830c6a6061c24fae5868304c72bcc, type: 3}
   - {fileID: 3176900630756269925, guid: ead9ecadc68daf144bcdc225934ffc85, type: 3}
+  midTreemat:
+  - {fileID: 2100000, guid: 916ab636a17699e4bba776b02c51c0a0, type: 2}
+  - {fileID: 2100000, guid: 91c6501e7931b6e4594706bfd3d12cfe, type: 2}
+  - {fileID: 2100000, guid: 52b7fa6eea5b2804a929877cb8cd570f, type: 2}
 --- !u!65 &3343378935468093413
 BoxCollider:
   m_ObjectHideFlags: 0
