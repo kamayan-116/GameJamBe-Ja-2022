@@ -17,6 +17,8 @@ public class S_JD_CanvasManager : MonoBehaviour
     [SerializeField] GameObject endingPanel;
     [SerializeField] Text playTimeText;
     [SerializeField] GameObject pressTextObj;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip[] audioClips;
     public GameObject HUD;
     public GameObject MiniGamePanel;
     public Animator SmahButton;
@@ -123,6 +125,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         HUD.SetActive(true);
         pauseMenuPanel.SetActive(false);
+        audioSource.PlayOneShot(audioClips[1]);
         Time.timeScale = 1.0f;
     }
 
@@ -137,6 +140,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         SceneManager.LoadSceneAsync(1, LoadSceneMode.Additive);
         SceneManager.UnloadSceneAsync(2);
         RemoveEndingPanel();
+        audioSource.PlayOneShot(audioClips[1]);
         GameObject[] DeleteTree = GameObject.FindGameObjectsWithTag("Respawn");
         foreach (GameObject obj in DeleteTree)
         {
@@ -182,6 +186,11 @@ public class S_JD_CanvasManager : MonoBehaviour
     public void SetInactivePressE()
     {
         pressTextObj.SetActive(false);
+    }
+
+    public void PlayOnSound()
+    {
+        audioSource.PlayOneShot(audioClips[0]);
     }
 
 }
