@@ -172,11 +172,11 @@ MonoBehaviour:
   StressValue: 50
   InGame: 0
   TreeNumber: 0
+  Stamina: 100
+  actualSpeedtree: 0
   speedStress: 1
   speedTree: 0.3
   speedStamine: 2
-  Stamina: 100
-  actualSpeedtree: 0
 --- !u!1001 &1075095523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: 680960907294180931, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 869126818855816084, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}

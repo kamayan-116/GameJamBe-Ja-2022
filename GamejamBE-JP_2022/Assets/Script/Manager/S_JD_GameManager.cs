@@ -88,6 +88,7 @@ public class S_JD_GameManager : MonoBehaviour
         Stamina = 100f;
         Timer = 0;
         speedStress = 0.2f;
+
         actualSpeedtree = speedTree;
 
         InGame = true;
@@ -120,6 +121,7 @@ public class S_JD_GameManager : MonoBehaviour
         {
             Destroy(obj);
         }
+        TreeNumber = 0;
         S_JD_CanvasManager.Instance.EndingPanel(time, _cause);
         S_JD_Player.Instance.AvailableMouvement = false;
         InGame = false;

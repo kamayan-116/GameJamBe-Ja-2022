@@ -22,7 +22,7 @@ public class S_JD_Tree : S_JD_Interact
         {
             StartCoroutine(LatenceWoodCutting());
             ReadyToCollect = false;
-        }       
+        } 
     }
 
     IEnumerator LatenceWoodCutting()
@@ -30,11 +30,33 @@ public class S_JD_Tree : S_JD_Interact
         S_JD_Player.Instance.CutMode = true;
         S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
+        if (S_JD_Player.Instance.WoodValue < 5)
+        {
+
+            if (S_JD_Player.Instance.elementType == S_JD_Player.ElementType.Wood)
+            {
+                S_JD_Player.Instance.WoodValue += 2;
+                S_JD_CanvasManager.Instance.SetValueTree(S_JD_Player.Instance.WoodValue);
+                S_JD_Player.Instance.PlayHeartParticle();
+            }
+            else
+            {
+                S_JD_Player.Instance.WoodValue += 1;
+                S_JD_CanvasManager.Instance.SetValueTree(S_JD_Player.Instance.WoodValue);
+            }
+            S_JD_Player.Instance.CuttingWood.Play();
+        }
+        if (S_JD_Player.Instance.WoodValue > 5)
+        {
+            S_JD_Player.Instance.WoodValue = 5;
+            S_JD_CanvasManager.Instance.SetValueTree(S_JD_Player.Instance.WoodValue);
+        }
         yield return new WaitForSeconds(TimeOfCuttingWood);
         UpTreeAnim.SetTrigger("Fall");
         S_JD_Player.Instance.CutMode = false;
         S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_GameManager.Instance.TreeNumber -= 1;
+
         StartCoroutine(DeadTimer());
     }
 

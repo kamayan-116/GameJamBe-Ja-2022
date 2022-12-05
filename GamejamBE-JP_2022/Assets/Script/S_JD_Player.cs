@@ -129,51 +129,12 @@ public class S_JD_Player : MonoBehaviour
 
     public void GetWater()
     {
-        if(WaterValue < 5 && !RecoltWater)
-        {
-            RecoltWater = true;
-            if (elementType == ElementType.Water)
-            {
-                WaterValue += 2;
-                S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
-                PlayHeartParticle();
-            }
-            else
-            {
-                WaterValue += 1;
-                S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
-            }
-        }
-        if (WaterValue > 5)
-        {
-            WaterValue = 5;
-            S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
-        }
+
     }
 
     public void GetWood()
     {
-        if(WoodValue < 5)
-        {
-
-            if (elementType == ElementType.Wood)
-            {
-                WoodValue += 2;
-                S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-                PlayHeartParticle();
-            }
-            else
-            {
-                WoodValue += 1;
-                S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-            }
-            CuttingWood.Play();
-        }
-        if (WoodValue > 5)
-        {
-            WoodValue = 5;
-            S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-        }
+        
     }
 
     public void GetBath()
