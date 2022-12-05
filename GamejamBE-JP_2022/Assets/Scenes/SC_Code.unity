@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 5.08
+  m_AmbientIntensity: 6.51
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.23921569, g: 0.21176471, b: 0.5019608, a: 1}
+  m_SubtractiveShadowColor: {r: 0.29156286, g: 0.62695944, b: 0.6792453, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 234cb18677a9fe3489e6372fa4093aeb, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
   speedTree: 0.3
   speedStamine: 2
   maxspeedstress: 1
-  speedStressIncreaseRate: 0.01
+  speedStressIncreaseRate: 0.007
 --- !u!1001 &1075095523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -256,6 +256,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1733613062, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 869126818855816084, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1567239307250716018, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457246831362550036, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 5457246831362550036, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 6756279520512724089, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_Pivot.x

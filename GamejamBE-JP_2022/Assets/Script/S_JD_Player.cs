@@ -37,6 +37,7 @@ public class S_JD_Player : MonoBehaviour
     public ParticleSystem footStepParticle;
 
     public Animator Sky;
+    public S_JD_Bath Bath;
 
     private void Awake()
     {
@@ -200,6 +201,9 @@ public class S_JD_Player : MonoBehaviour
             MiniGameScore += 1;
             //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
+            S_JD_GameManager.Instance.EarthValue -= 0.625f;
+            Bath.Soaping();
+
         }
         if (elementType == ElementType.Fire)
         {
@@ -239,7 +243,7 @@ public class S_JD_Player : MonoBehaviour
         WaterValue -= 1;
         S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
-        S_JD_GameManager.Instance.EarthValue -= 40;
+        //S_JD_GameManager.Instance.EarthValue -= 40;
         S_JD_GameManager.Instance.actualSpeedtree = 0f;
     }
 
@@ -254,7 +258,7 @@ public class S_JD_Player : MonoBehaviour
         else if (elementType == ElementType.Fire)
         {
             //FireElement
-            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.91f, 0.68f, 0.01f));
+            PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.77f, 0.45f, 0.26f));
             //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else if (elementType == ElementType.Wood)
