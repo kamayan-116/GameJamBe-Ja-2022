@@ -6,9 +6,7 @@ public class S_JD_Player : MonoBehaviour
 {
     public static S_JD_Player Instance;
 
-    public GameObject sleepParticle;
-    public GameObject smallsleepParticle;
-    public ParticleSystem heartParticle;
+    
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
@@ -33,6 +31,10 @@ public class S_JD_Player : MonoBehaviour
     public AudioSource Walk2;
     public ParticleSystem NinjaSmoke;
     public AudioSource NinjaSoundEffect;
+    public GameObject sleepParticle;
+    public GameObject smallsleepParticle;
+    public ParticleSystem heartParticle;
+    public ParticleSystem footStepParticle;
 
     private void Awake()
     {
@@ -49,6 +51,7 @@ public class S_JD_Player : MonoBehaviour
         GambleElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
         sleepParticle.SetActive(false);
+        smallsleepParticle.SetActive(false);
         smallsleepParticle.SetActive(false);
     }
 
@@ -82,6 +85,11 @@ public class S_JD_Player : MonoBehaviour
             {
                 PlayerCharacter.transform.localScale = new Vector3((Input.GetAxis("Horizontal") * (10 / (Mathf.Abs(Input.GetAxis("Horizontal") * 10)))) * 2, 2, 2);
                 PlaySoundWalk();
+                if (footStepParticle.isStopped) footStepParticle.Play();
+            }
+            else
+            {
+                if (footStepParticle.isPlaying) footStepParticle.Stop();
             }
 
             
