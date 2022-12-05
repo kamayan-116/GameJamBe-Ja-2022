@@ -178,7 +178,7 @@ MonoBehaviour:
   speedStress: 0
   speedTree: 0.3
   speedStamine: 2
-  maxspeedstress: 1.1
+  maxspeedstress: 1.15
   speedStressIncreaseRate: 0.007
 --- !u!1001 &1075095523
 PrefabInstance:
