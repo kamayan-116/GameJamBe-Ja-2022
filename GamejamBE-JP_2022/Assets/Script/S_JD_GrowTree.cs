@@ -10,6 +10,7 @@ public class S_JD_GrowTree : S_JD_Interact
     private GameObject Parent;
     private GameObject Tree;
     public Material[] midTreemat;
+    public AudioSource WateringSound;
 
     public int typeoftree = 0;
 
@@ -29,13 +30,16 @@ public class S_JD_GrowTree : S_JD_Interact
             S_JD_Player.Instance.WaterValue -= 1;
             WaterValue += 1;
             S_JD_CanvasManager.Instance.SetValueWater(S_JD_Player.Instance.WaterValue);
-            StartCoroutine(LatenceBetweenWater());         
+            StartCoroutine(LatenceBetweenWater());
         }
+        else
+            S_JD_Player.Instance.NoSound.Play();
     }
 
     IEnumerator LatenceBetweenWater()
     {
         CanBeActivate = false;
+        WateringSound.Play();
         S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
         yield return new WaitForSeconds(2f);
@@ -53,6 +57,7 @@ public class S_JD_GrowTree : S_JD_Interact
             GetComponentInChildren<MeshRenderer>().material = midTreemat[typeoftree];
             GetComponentInChildren<Transform>().localScale = new Vector3(3, 3, 3);
         }
+        WateringSound.Stop();
     }
     public void SetParent(GameObject _parent, int _typeoftree)
     {
