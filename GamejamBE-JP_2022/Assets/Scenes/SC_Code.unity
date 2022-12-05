@@ -256,57 +256,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 680960907294180931, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1598784213696129437, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9c8cc5023c3d02c4bb1e130583b4c463,
-        type: 3}
-    - target: {fileID: 1598784213696129437, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1598784213696129437, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.9159316
-      objectReference: {fileID: 0}
-    - target: {fileID: 1598784213696129437, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.8443396
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279518868551304, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279519432440380, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -110
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279519898453320, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -110
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279520431117223, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279520491672431, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -60
-      objectReference: {fileID: 0}
     - target: {fileID: 6756279520512724089, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_Pivot.x
@@ -416,37 +365,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 6756279520635707598, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7078800171816533311, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747749727561691609, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9c8cc5023c3d02c4bb1e130583b4c463,
-        type: 3}
-    - target: {fileID: 7747749727561691609, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747749727561691609, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0.9159316
-      objectReference: {fileID: 0}
-    - target: {fileID: 7747749727561691609, guid: ea46f212c1384bb438ce95471a1c7018,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0.8443396
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}

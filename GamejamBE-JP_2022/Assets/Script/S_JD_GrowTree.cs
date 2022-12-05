@@ -17,6 +17,10 @@ public class S_JD_GrowTree : S_JD_Interact
     {
         interactionType = "GiveWater";
         //typeoftree = Random.Range(0, 2);
+        if (typeoftree == 2)
+        {
+            transform.Translate(0, -0.3f, 0);
+        }
     }
     protected override void Interaction()
     {

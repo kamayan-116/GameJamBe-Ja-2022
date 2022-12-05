@@ -63,7 +63,7 @@ public class S_JD_GameManager : MonoBehaviour
     {
         Timer += Time.deltaTime * Time.timeScale;
 
-        if (0.9999 > (Timer%60) && (Timer%60 < 1.0001 && !Day))
+        /*if (0.9999 > (Timer%60) && (Timer%60 < 1.0001 && !Day))
         {
             S_JD_Player.Instance.Sky.SetTrigger("Day");
             Day = true;
@@ -73,7 +73,7 @@ public class S_JD_GameManager : MonoBehaviour
         {
             S_JD_Player.Instance.Sky.SetTrigger("Night");
             Day = false;
-        }          
+        }   */       
     }
 
     private void SetSpeedStress()
