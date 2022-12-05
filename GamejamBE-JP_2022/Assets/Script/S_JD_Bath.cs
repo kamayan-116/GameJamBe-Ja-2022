@@ -8,6 +8,10 @@ public class S_JD_Bath : S_JD_Interact
     public ParticleSystem Fire;
     public AudioSource FireSound;
     public AudioSource WaterSound;
+    public GameObject BathFull;
+    public GameObject BathEmpty;
+    public ParticleSystem Soap;
+
     private void Start()
     {
         interactionType = "GetBath";
@@ -23,10 +27,19 @@ public class S_JD_Bath : S_JD_Interact
         Fire.Play();
         FireSound.Play();
         WaterSound.Play();
+        BathEmpty.SetActive(false);
+        BathFull.SetActive(true);
         yield return new WaitForSeconds(10f);
         Smoke.Stop();
         Fire.Stop();
         FireSound.Stop();
         WaterSound.Stop();
+        BathEmpty.SetActive(true);
+        BathFull.SetActive(false);
+    }
+
+    public void Soaping()
+    {
+        Soap.Play();
     }
 }

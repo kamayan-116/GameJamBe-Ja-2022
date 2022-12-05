@@ -103,7 +103,7 @@ Material:
     - _GlossyReflections: 0
     - _HaveNightTexture: 1
     - _Metallic: 0
-    - _NightBlend: 0
+    - _NightBlend: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
