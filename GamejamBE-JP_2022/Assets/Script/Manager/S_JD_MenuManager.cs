@@ -8,6 +8,7 @@ public class S_JD_MenuManager : MonoBehaviour
     public GameObject MainMenuPanel;
     public GameObject ControlsPanel;
     public AudioSource BouttonSon;
+    public AudioSource ButtonApprove;
 
     public void ExitGame()
     {
@@ -24,12 +25,14 @@ public class S_JD_MenuManager : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        PlayApproveSound();
         ControlsPanel.SetActive(false);
         MainMenuPanel.SetActive(true);
     }
 
     public void Controls()
     {
+        PlayApproveSound();
         MainMenuPanel.SetActive(false);
         ControlsPanel.SetActive(true);        
     }
@@ -46,5 +49,11 @@ public class S_JD_MenuManager : MonoBehaviour
     public void PlayButtonSound()
     {
         BouttonSon.Play();
+    }
+
+    //When you push the button
+    void PlayApproveSound()
+    {
+        ButtonApprove.Play();
     }
 }
