@@ -11,6 +11,7 @@ public class S_JD_Bath : S_JD_Interact
     public GameObject BathFull;
     public GameObject BathEmpty;
     public ParticleSystem Soap;
+    public AudioSource SoapSound;
 
     private void Start()
     {
@@ -41,5 +42,6 @@ public class S_JD_Bath : S_JD_Interact
     public void Soaping()
     {
         Soap.Play();
+        SoapSound.Play();
     }
 }
