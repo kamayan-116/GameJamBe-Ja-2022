@@ -11,12 +11,12 @@ public class S_JD_GrowTree : S_JD_Interact
     private GameObject Tree;
     public Material[] midTreemat;
 
-    private int typeoftree;
+    public int typeoftree = 0;
 
     private void Start()
     {
         interactionType = "GiveWater";
-        typeoftree = Random.Range(0, 2);
+        //typeoftree = Random.Range(0, 2);
     }
     protected override void Interaction()
     {
@@ -50,8 +50,9 @@ public class S_JD_GrowTree : S_JD_Interact
             GetComponentInChildren<Transform>().localScale = new Vector3(3, 3, 3);
         }
     }
-    public void SetParent(GameObject _parent)
+    public void SetParent(GameObject _parent, int _typeoftree)
     {
         Parent = _parent;
+        typeoftree = _typeoftree;
     }
 }

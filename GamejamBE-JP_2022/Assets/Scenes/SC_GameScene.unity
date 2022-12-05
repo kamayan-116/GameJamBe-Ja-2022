@@ -1077,20 +1077,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6560112846464899545, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6560112846464899545, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6939864051051444146, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933, type: 3}

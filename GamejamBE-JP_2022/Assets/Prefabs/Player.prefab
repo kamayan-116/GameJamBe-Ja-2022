@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1742369781}
   - component: {fileID: 1742369780}
   - component: {fileID: 1742369779}
+  - component: {fileID: 1745733526136505002}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -83,6 +84,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &1745733526136505002
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742369777}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6ac66c051d075e643bacb493eac215bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1745733526389033420
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,6 +412,7 @@ MonoBehaviour:
   smallsleepParticle: {fileID: 3584131791748596777}
   heartParticle: {fileID: 1246374112591485381}
   footStepParticle: {fileID: 3954518289088066493}
+  Sky: {fileID: 1745733526136505002}
 --- !u!1 &2817413437658694469
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,7 +782,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 68bf0f64ffd0cfb4bb38a4ad89bda450, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1433,6 +1455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: InitialModule.startLifetime.scalar
       value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2510058534343545084, guid: b4a2ec4adbce8c6409f3b7ce2cfd1660,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510058534343545084, guid: b4a2ec4adbce8c6409f3b7ce2cfd1660,
         type: 3}

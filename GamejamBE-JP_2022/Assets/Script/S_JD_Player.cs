@@ -36,6 +36,8 @@ public class S_JD_Player : MonoBehaviour
     public ParticleSystem heartParticle;
     public ParticleSystem footStepParticle;
 
+    public Animator Sky;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;

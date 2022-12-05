@@ -12,8 +12,9 @@ public class S_JD_GameManager : MonoBehaviour
     public bool InGame = false;
     public int TreeNumber = 0;
     public float Stamina = 100f;
-    private float Timer = 0;
+    private float Timer = 1;
     public float actualSpeedtree = 0;
+    public float actualSpeedStress = 0;
 
 
     [Space(10),Header("Game Balance")]
@@ -21,7 +22,10 @@ public class S_JD_GameManager : MonoBehaviour
     public float speedStress = 0.2f;
     public float speedTree = 0.3f;
     public float speedStamine = 1;
+    public float maxspeedstress = 1;
+    public float speedStressIncreaseRate = 0.01f;
 
+    private bool Day = false;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -58,13 +62,25 @@ public class S_JD_GameManager : MonoBehaviour
     private void SetTimer()
     {
         Timer += Time.deltaTime * Time.timeScale;
+
+        if (0.9999 > (Timer%60) && (Timer%60 < 1.0001 && !Day))
+        {
+            S_JD_Player.Instance.Sky.SetTrigger("Day");
+            Day = true;
+        }
+
+        else if (0.9999 > (Timer % 30) && (Timer % 30) < 1.0001 && Day)
+        {
+            S_JD_Player.Instance.Sky.SetTrigger("Night");
+            Day = false;
+        }          
     }
 
     private void SetSpeedStress()
     {
-        if (speedStress < 0.3)
+        if (actualSpeedStress < maxspeedstress)
         {
-            speedStress += Time.deltaTime / 100f;
+            actualSpeedStress += Time.deltaTime * speedStressIncreaseRate;
         }
 
         SetStressValue();
@@ -87,9 +103,9 @@ public class S_JD_GameManager : MonoBehaviour
         StressValue = 50f;
         Stamina = 100f;
         Timer = 0;
-        speedStress = 0.2f;
 
         actualSpeedtree = speedTree;
+        actualSpeedStress = speedStress;
 
         InGame = true;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
@@ -98,7 +114,7 @@ public class S_JD_GameManager : MonoBehaviour
     public void SetStressValue()
     {
         if (StressValue <= 100)
-            StressValue = StressValue - (1 * Time.deltaTime * speedStress);
+            StressValue = StressValue - (1 * Time.deltaTime * actualSpeedStress);
         else
             StressValue = 100;
         S_JD_CanvasManager.Instance.SetValuePlayer(StressValue);

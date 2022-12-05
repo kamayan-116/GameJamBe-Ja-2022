@@ -25,9 +25,6 @@ public class S_JD_CanvasManager : MonoBehaviour
     public GameObject GameOverEarth;
     public GameObject GameOverStress;
 
-    public GameObject TutoPanel1;
-    public GameObject TutoPanel2;
-    public GameObject TutoPanel3;
 
     public Animator DeathFade;
     #endregion
@@ -186,4 +183,5 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         pressTextObj.SetActive(false);
     }
+
 }
