@@ -38,6 +38,7 @@ public class S_JD_Player : MonoBehaviour
 
     public Animator Sky;
     public S_JD_Bath Bath;
+    public AudioSource NoSound;
 
     private void Awake()
     {
@@ -143,7 +144,9 @@ public class S_JD_Player : MonoBehaviour
     public void GetBath()
     {
         if (CanLaunchMiniGame && WoodValue >= 3 && WaterValue >= 1)
-            LaunchMiniGame();       
+            LaunchMiniGame();
+        else
+            NoSound.Play();
     }
 
     public void GiveWater()

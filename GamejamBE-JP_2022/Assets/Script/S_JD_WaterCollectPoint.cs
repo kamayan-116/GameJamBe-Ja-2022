@@ -5,6 +5,7 @@ using UnityEngine;
 public class S_JD_WaterCollectPoint : S_JD_Interact
 {
     public float TimeBetweenCollect = 2f;
+    public AudioSource WaterGathering;
     //public float TimeOfCollect = 2f;
 
     private void Start()
@@ -17,7 +18,9 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
         {
             StartCoroutine(LatenceWaterGathering());
             //ReadyToCollect = false;
-        }            
+        }
+        else
+            S_JD_Player.Instance.NoSound.Play();
         //StartCoroutine(Latence());
     }
 
@@ -31,6 +34,7 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
     {
         S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
+        WaterGathering.Play();
         if (S_JD_Player.Instance.WaterValue < 5 && !S_JD_Player.Instance.RecoltWater)
         {
             S_JD_Player.Instance.RecoltWater = true;
@@ -52,6 +56,7 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
             S_JD_CanvasManager.Instance.SetValueWater(S_JD_Player.Instance.WaterValue);
         }
         yield return new WaitForSeconds(TimeBetweenCollect);
+        WaterGathering.Stop();
         S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_CanvasManager.Instance.SetActivePressE();
         S_JD_Player.Instance.RecoltWater = false;

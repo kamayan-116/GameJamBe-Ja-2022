@@ -10,6 +10,8 @@ public class S_JD_Tree : S_JD_Interact
 
     private GameObject Parent;
 
+    public AudioSource FallingTree;
+
     private void Start()
     {
         interactionType = "GetWood";
@@ -52,6 +54,7 @@ public class S_JD_Tree : S_JD_Interact
             S_JD_CanvasManager.Instance.SetValueTree(S_JD_Player.Instance.WoodValue);
         }
         yield return new WaitForSeconds(TimeOfCuttingWood);
+        FallingTree.Play();
         UpTreeAnim.SetTrigger("Fall");
         S_JD_Player.Instance.CutMode = false;
         S_JD_Player.Instance.AvailableMouvement = true;
