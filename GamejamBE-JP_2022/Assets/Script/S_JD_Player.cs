@@ -8,6 +8,7 @@ public class S_JD_Player : MonoBehaviour
 
     public GameObject sleepParticle;
     public GameObject smallsleepParticle;
+    public ParticleSystem heartParticle;
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
@@ -23,7 +24,8 @@ public class S_JD_Player : MonoBehaviour
     public bool CanLaunchMiniGame = true;
     public bool CutMode = false;
 
-    public int elementType = 0;
+    public enum ElementType { Water = 0, Fire = 1, Wood = 2,}
+    public ElementType elementType = 0;
     public bool RecoltWater = false;
 
     public AudioSource CuttingWood;
@@ -122,10 +124,11 @@ public class S_JD_Player : MonoBehaviour
         if(WaterValue < 5 && !RecoltWater)
         {
             RecoltWater = true;
-            if (elementType == 0)
+            if (elementType == ElementType.Water)
             {
                 WaterValue += 2;
                 S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
+                PlayHeartParticle();
             }
             else
             {
@@ -145,10 +148,11 @@ public class S_JD_Player : MonoBehaviour
         if(WoodValue < 5)
         {
 
-            if (elementType == 2)
+            if (elementType == ElementType.Wood)
             {
                 WoodValue += 2;
                 S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
+                PlayHeartParticle();
             }
             else
             {
@@ -226,8 +230,9 @@ public class S_JD_Player : MonoBehaviour
             //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
         }
-        if (elementType == 1)
+        if (elementType == ElementType.Fire)
         {
+            PlayHeartParticle();
             if (MiniGameScore == Mathf.Floor(SmashGameScore * 0.5f))
             {
                 StartCoroutine(ExitMiniGameLatence(2f));
@@ -269,19 +274,19 @@ public class S_JD_Player : MonoBehaviour
 
     public void SetElement()
     {
-        if (elementType == 0)
+        if (elementType == ElementType.Water)
         {
             //Water Element
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.59f, 0.78f, 0.90f));
             //print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
         }
-        else if (elementType == 1)
+        else if (elementType == ElementType.Fire)
         {
             //FireElement
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.91f, 0.68f, 0.01f));
             //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
-        else if (elementType == 2)
+        else if (elementType == ElementType.Wood)
         {
             //GreenElement
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.74f, 0.75f, 0.44f));
@@ -293,8 +298,8 @@ public class S_JD_Player : MonoBehaviour
 
     public void GambleElement()
     {
-        int previousElement = elementType;
-        elementType = Random.Range(0, 3);
+        ElementType previousElement = elementType;
+        elementType = (ElementType)System.Enum.ToObject(typeof(ElementType), Random.Range(0, 3));
         if (previousElement == elementType)
             GambleElement();
         else
@@ -302,6 +307,8 @@ public class S_JD_Player : MonoBehaviour
             SetElement();
         }
     }
+
+    #region Activate Particles
 
     public void SetActiveSleep()
     {
@@ -322,6 +329,13 @@ public class S_JD_Player : MonoBehaviour
     {
         smallsleepParticle.SetActive(false);
     }
+
+    public void PlayHeartParticle()
+    {
+        heartParticle.Play();
+    }
+
+    #endregion
 
     public void PlaySoundWalk()
     {
