@@ -17,6 +17,7 @@ public class S_JD_MenuManager : MonoBehaviour
 
     public void LoadLevel()
     {
+        PlayApproveSound();
         S_JD_CanvasManager.Instance.RemoveEndingPanel();
         SceneManager.UnloadSceneAsync(1);
         //SceneManager.LoadSceneAsync(2, LoadSceneMode.Additive);
