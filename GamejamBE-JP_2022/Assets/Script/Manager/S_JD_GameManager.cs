@@ -11,13 +11,16 @@ public class S_JD_GameManager : MonoBehaviour
     public float StressValue = 50f;
     public bool InGame = false;
     public int TreeNumber = 0;
+    public float Stamina = 100f;
+    private float Timer = 0;
+    public float actualSpeedtree = 0;
+
+
+    [Space(10),Header("Game Balance")]
+    [SerializeField]
     public float speedStress = 0.2f;
     public float speedTree = 0.3f;
     public float speedStamine = 1;
-    public float Stamina = 100f;
-
-    private float Timer = 0;
-    public float actualSpeedtree = 0;
 
     private void Awake()
     {
