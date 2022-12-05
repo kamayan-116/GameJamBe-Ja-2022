@@ -145,7 +145,7 @@ public class S_JD_Player : MonoBehaviour
     {
         if (CanLaunchMiniGame && WoodValue >= 3 && WaterValue >= 1)
             LaunchMiniGame();
-        else
+        else if (!InMiniGame)
             NoSound.Play();
     }
 
@@ -235,12 +235,14 @@ public class S_JD_Player : MonoBehaviour
         S_JD_GameManager.Instance.actualSpeedtree = S_JD_GameManager.Instance.speedTree;
         yield return new WaitForSeconds(_delay);
         CanLaunchMiniGame = true;
+        S_JD_CanvasManager.Instance.SetActivePressE();
     }
 
     private void LaunchMiniGame()
     {
         CanLaunchMiniGame = false;
         InMiniGame = true;
+        S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(true);
         WoodValue -= 3;
         WaterValue -= 1;
