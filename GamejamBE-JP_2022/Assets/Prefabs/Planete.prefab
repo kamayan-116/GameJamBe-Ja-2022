@@ -5192,6 +5192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
         type: 3}
+      propertyPath: InGrowMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
+        type: 3}
       propertyPath: typeoftree
       value: 2
       objectReference: {fileID: 0}
@@ -6832,6 +6837,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
         type: 3}
+      propertyPath: InGrowMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
+        type: 3}
       propertyPath: typeoftree
       value: 2
       objectReference: {fileID: 0}
@@ -7019,6 +7029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreeSpawner (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
+        type: 3}
+      propertyPath: InGrowMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a58c3d4dd32c16249a95e23b9fb2dcda, type: 3}
@@ -7674,6 +7689,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TreeSpawner (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
+        type: 3}
+      propertyPath: InGrowMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3167995222440612463, guid: a58c3d4dd32c16249a95e23b9fb2dcda,
         type: 3}
