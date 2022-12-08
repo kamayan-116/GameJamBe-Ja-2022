@@ -178,7 +178,7 @@ MonoBehaviour:
   actualEarthDamage: 0
   speedStress: 0.3
   speedTree: 0.3
-  earthDamage: 0.625
+  earthDamage: 0.7
   speedStamine: 2
   maxspeedstress: 1
   speedStressIncreaseRate: 0.003
