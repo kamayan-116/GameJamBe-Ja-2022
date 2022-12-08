@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class S_JD_CanvasManager : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class S_JD_CanvasManager : MonoBehaviour
 
 
     public Animator DeathFade;
+
+    public GameObject backToGameButton, endingButton;
     #endregion
 
 
@@ -117,6 +120,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         HUD.SetActive(false);
         pauseMenuPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(backToGameButton);
         Time.timeScale = 0;
     }
 
@@ -170,6 +174,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         {
             print("Error in the ending condition");
         }
+        EventSystem.current.SetSelectedGameObject(endingButton);
         //clearImage.sprite = clearSprite[_clearCause];
     }
 

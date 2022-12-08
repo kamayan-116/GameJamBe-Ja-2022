@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class S_JD_Player : MonoBehaviour
 {
@@ -352,4 +353,5 @@ public class S_JD_Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         AvailableMouvement = true;
     }
+
 }

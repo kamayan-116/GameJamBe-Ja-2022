@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class S_JD_WaterCollectPoint : S_JD_Interact
 {
@@ -32,6 +33,7 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
 
     IEnumerator LatenceWaterGathering()
     {
+        GamePad.SetVibration(0, .05f, .05f);
         S_JD_CanvasManager.Instance.SetInactivePressE();
         S_JD_Player.Instance.AvailableMouvement = false;
         WaterGathering.Play();
@@ -60,6 +62,7 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
         S_JD_Player.Instance.AvailableMouvement = true;
         S_JD_CanvasManager.Instance.SetActivePressE();
         S_JD_Player.Instance.RecoltWater = false;
+        GamePad.SetVibration(0, 0f, 0f);
         //ReadyToCollect = true;
         //S_JD_GameManager.Instance.TreeNumber -= 1;
         //StartCoroutine(DeadTimer());
