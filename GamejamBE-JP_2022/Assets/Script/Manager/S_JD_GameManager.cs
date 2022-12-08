@@ -15,15 +15,19 @@ public class S_JD_GameManager : MonoBehaviour
     private float Timer = 1;
     public float actualSpeedtree = 0;
     public float actualSpeedStress = 0;
+    public float actualEarthDamage = 0;
 
 
     [Space(10),Header("Game Balance")]
     [SerializeField]
-    public float speedStress = 0.2f;
+    public float speedStress = 0;
     public float speedTree = 0.3f;
+    public float earthDamage = 0.5f;
     public float speedStamine = 1;
     public float maxspeedstress = 1;
     public float speedStressIncreaseRate = 0.01f;
+    public float maxEarthDamage = 1;
+    public float earthDamageIncreaseRate = 0.001f;
 
     private bool Day = false;
     private void Awake()
@@ -83,6 +87,12 @@ public class S_JD_GameManager : MonoBehaviour
             actualSpeedStress += Time.deltaTime * speedStressIncreaseRate;
         }
 
+        if (actualEarthDamage < maxEarthDamage)
+        {
+            actualEarthDamage += Time.deltaTime * earthDamageIncreaseRate;
+        }
+
+
         SetStressValue();
 
         SetEarthValue();
@@ -106,6 +116,7 @@ public class S_JD_GameManager : MonoBehaviour
 
         actualSpeedtree = speedTree;
         actualSpeedStress = speedStress;
+        actualEarthDamage = earthDamage;
 
         InGame = true;
         S_JD_CanvasManager.Instance.MiniGamePanel.SetActive(false);
@@ -128,6 +139,7 @@ public class S_JD_GameManager : MonoBehaviour
             EarthValue = 100;
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
     }
+
 
     public void GameOver(int _cause)
     {

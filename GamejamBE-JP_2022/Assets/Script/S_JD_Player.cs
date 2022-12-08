@@ -15,10 +15,12 @@ public class S_JD_Player : MonoBehaviour
     [HideInInspector]
     public bool AvailableMouvement = true;
     public int SmashGameScore = 26;
+    public float scoreRate = 0.75f;
     public Material[] Anim;
 
     private bool InMiniGame = false;
     private int MiniGameScore = 0;
+    public float EarthAttackValue = 0f;
     public bool CanLaunchMiniGame = true;
     public bool CutMode = false;
 
@@ -129,6 +131,14 @@ public class S_JD_Player : MonoBehaviour
         {
             SmashButton();
         }
+
+        if (EarthAttackValue > 0)
+        {
+            float atkValue = Time.deltaTime * 5;
+            S_JD_GameManager.Instance.EarthValue -= atkValue;
+            EarthAttackValue -= atkValue;
+            if (EarthAttackValue < 0) EarthAttackValue = 0;
+        }
     }
 
     public void GetWater()
@@ -204,14 +214,15 @@ public class S_JD_Player : MonoBehaviour
             MiniGameScore += 1;
             //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
-            S_JD_GameManager.Instance.EarthValue -= 0.625f;
+            //S_JD_GameManager.Instance.EarthValue -= S_JD_GameManager.Instance.actualEarthDamage;
+            EarthAttackValue += S_JD_GameManager.Instance.actualEarthDamage;
             Bath.Soaping();
 
         }
         if (elementType == ElementType.Fire)
         {
             PlayHeartParticle();
-            if (MiniGameScore == Mathf.Floor(SmashGameScore * 0.5f))
+            if (MiniGameScore == Mathf.Floor(SmashGameScore * scoreRate))
             {
                 StartCoroutine(ExitMiniGameLatence(2f));
             }
