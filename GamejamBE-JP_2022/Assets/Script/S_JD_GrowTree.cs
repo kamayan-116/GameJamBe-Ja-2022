@@ -25,7 +25,7 @@ public class S_JD_GrowTree : S_JD_Interact
     }
     protected override void Interaction()
     {
-        if (CanBeActivate && S_JD_Player.Instance.WaterValue > 0)
+        if (CanBeActivate && S_JD_Player.Instance.WaterValue > 0 && S_JD_Player.Instance.AvailableMouvement)
         {
             S_JD_Player.Instance.WaterValue -= 1;
             WaterValue += 1;

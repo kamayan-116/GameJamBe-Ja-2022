@@ -15,7 +15,7 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
     }
     protected override void Interaction()
     {
-        if (S_JD_Player.Instance.WaterValue < 5)
+        if (S_JD_Player.Instance.WaterValue < 5 && S_JD_Player.Instance.AvailableMouvement)
         {
             StartCoroutine(LatenceWaterGathering());
             //ReadyToCollect = false;
@@ -64,7 +64,6 @@ public class S_JD_WaterCollectPoint : S_JD_Interact
         S_JD_Player.Instance.RecoltWater = false;
         GamePad.SetVibration(0, 0f, 0f);
         //ReadyToCollect = true;
-        //S_JD_GameManager.Instance.TreeNumber -= 1;
         //StartCoroutine(DeadTimer());
     }
 }

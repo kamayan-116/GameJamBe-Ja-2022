@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1193238, g: 0.09637459, b: 0.68212897, a: 1}
+  m_IndirectSpecularColor: {r: 0.0025707777, g: 0.0021961657, b: 0.018419148, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1238,6 +1238,16 @@ PrefabInstance:
       propertyPath: Bath
       value: 
       objectReference: {fileID: 1373790181}
+    - target: {fileID: 1745733526711926640, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: sleep
+      value: 
+      objectReference: {fileID: 1745733526136505002}
+    - target: {fileID: 1745733526711926640, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: smallsleep
+      value: 
+      objectReference: {fileID: 1745733526136505001}
     - target: {fileID: 1745733526711926641, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
         type: 3}
       propertyPath: m_RootOrder
@@ -1298,5 +1308,32 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2877341629159194220, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4783850694646104137, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066521097598482956, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933, type: 3}
+--- !u!198 &1745733526136505001 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6066521097598482956, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+    type: 3}
+  m_PrefabInstance: {fileID: 1745733526136505000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1745733526136505002 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4783850694646104137, guid: 3ca7c6ab495a4a549b9b6f0fa2ac8933,
+    type: 3}
+  m_PrefabInstance: {fileID: 1745733526136505000}
+  m_PrefabAsset: {fileID: 0}

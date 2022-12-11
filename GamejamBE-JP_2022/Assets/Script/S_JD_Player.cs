@@ -7,7 +7,7 @@ public class S_JD_Player : MonoBehaviour
 {
     public static S_JD_Player Instance;
 
-    
+
     public float speed = 10;
     public GameObject PlayerCharacter;
     public float Distance = 11;
@@ -35,7 +35,9 @@ public class S_JD_Player : MonoBehaviour
     public ParticleSystem NinjaSmoke;
     public AudioSource NinjaSoundEffect;
     public GameObject sleepParticle;
+    // public ParticleSystem sleep;
     public GameObject smallsleepParticle;
+    // public ParticleSystem smallsleep;
     public ParticleSystem heartParticle;
     public ParticleSystem footStepParticle;
 
@@ -58,7 +60,6 @@ public class S_JD_Player : MonoBehaviour
         GambleElement();
         //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
         sleepParticle.SetActive(false);
-        smallsleepParticle.SetActive(false);
         smallsleepParticle.SetActive(false);
     }
 
@@ -99,32 +100,32 @@ public class S_JD_Player : MonoBehaviour
                 if (footStepParticle.isPlaying) footStepParticle.Stop();
             }
 
-            
+
         }
 
         if (CutMode)
         {
             if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[3])
                 PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[3];
-        }            
+        }
         else if (!AvailableMouvement)
         {
             if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[2])
                 PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[2];
-        }           
+        }
         else if (Input.GetAxis("Horizontal") != 0)
         {
             if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[1])
             {
                 PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[1];
             }
-        }           
+        }
         else
         {
             if (PlayerCharacter.GetComponent<MeshRenderer>().material != Anim[0])
                 PlayerCharacter.GetComponent<MeshRenderer>().material = Anim[0];
         }
-            
+
 
         SetElement();
 
@@ -149,7 +150,7 @@ public class S_JD_Player : MonoBehaviour
 
     public void GetWood()
     {
-        
+
     }
 
     public void GetBath()
@@ -305,21 +306,25 @@ public class S_JD_Player : MonoBehaviour
     public void SetActiveSleep()
     {
         sleepParticle.SetActive(true);
+        // sleep.Play();
     }
 
     public void SetInactiveSleep()
     {
         sleepParticle.SetActive(false);
+        // sleep.Stop();
     }
 
     public void SetActiveSmallSleep()
     {
         smallsleepParticle.SetActive(true);
+        // smallsleep.Play();
     }
 
     public void SetInactiveSmallSleep()
     {
         smallsleepParticle.SetActive(false);
+        // smallsleep.Stop();
     }
 
     public void PlayHeartParticle()

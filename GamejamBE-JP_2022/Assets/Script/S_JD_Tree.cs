@@ -21,7 +21,7 @@ public class S_JD_Tree : S_JD_Interact
 
     protected override void Interaction()
     {
-        if (S_JD_Player.Instance.WoodValue < 5)
+        if (S_JD_Player.Instance.WoodValue < 5 && S_JD_Player.Instance.AvailableMouvement)
         {
             StartCoroutine(LatenceWoodCutting());
             ReadyToCollect = false;

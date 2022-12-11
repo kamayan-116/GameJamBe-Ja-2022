@@ -29,7 +29,6 @@ public class S_JD_GameManager : MonoBehaviour
     public float maxEarthDamage = 1;
     public float earthDamageIncreaseRate = 0.001f;
 
-    private bool Day = false;
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -49,10 +48,6 @@ public class S_JD_GameManager : MonoBehaviour
     {
         if (InGame)
         {
-            // SetStressValue();
-
-            // SetEarthValue();
-
             SetTimer();
 
             SetSpeedStress();
@@ -66,18 +61,6 @@ public class S_JD_GameManager : MonoBehaviour
     private void SetTimer()
     {
         Timer += Time.deltaTime * Time.timeScale;
-
-        /*if (0.9999 > (Timer%60) && (Timer%60 < 1.0001 && !Day))
-        {
-            S_JD_Player.Instance.Sky.SetTrigger("Day");
-            Day = true;
-        }
-
-        else if (0.9999 > (Timer % 30) && (Timer % 30) < 1.0001 && Day)
-        {
-            S_JD_Player.Instance.Sky.SetTrigger("Night");
-            Day = false;
-        }   */       
     }
 
     private void SetSpeedStress()
@@ -107,6 +90,7 @@ public class S_JD_GameManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(2));
         print(SceneManager.GetActiveScene());
     }
+
     public void StartGame()
     {
         EarthValue = 50f;
@@ -125,7 +109,7 @@ public class S_JD_GameManager : MonoBehaviour
     public void SetStressValue()
     {
         if (StressValue <= 100)
-            StressValue = StressValue - (1 * Time.deltaTime * actualSpeedStress);
+            StressValue -= (1 * Time.deltaTime * actualSpeedStress);
         else
             StressValue = 100;
         S_JD_CanvasManager.Instance.SetValuePlayer(StressValue);
@@ -134,7 +118,7 @@ public class S_JD_GameManager : MonoBehaviour
     public void SetEarthValue()
     {
         if (EarthValue <= 100)
-            EarthValue = EarthValue + (TreeNumber * Time.deltaTime * actualSpeedtree);
+            EarthValue += (TreeNumber * Time.deltaTime * actualSpeedtree);
         else
             EarthValue = 100;
         S_JD_CanvasManager.Instance.SetValueEarth(EarthValue);
@@ -173,24 +157,7 @@ public class S_JD_GameManager : MonoBehaviour
         {
             Stamina = 0;
         }
-        Stamina = Stamina - (1 * Time.deltaTime * speedStamine);
+        Stamina -= (1 * Time.deltaTime * speedStamine);
         S_JD_CanvasManager.Instance.SetValueStamina(Stamina);
-        /*else
-        {
-            if(Stamina <= 10)
-            {
-                S_JD_Player.Instance.SetActiveSleep();
-            }
-            else if(Stamina <= 30)
-            {
-                S_JD_Player.Instance.SetInactiveSleep();
-                S_JD_Player.Instance.SetActiveSmallSleep();
-            }
-            else
-            {
-                S_JD_Player.Instance.SetInactiveSmallSleep();
-            }
-            
-        }*/
     }
 }
