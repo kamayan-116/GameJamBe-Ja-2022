@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 風呂に関するプログラム
 public class S_JD_Bath : S_JD_Interact
 {
     public ParticleSystem Smoke;

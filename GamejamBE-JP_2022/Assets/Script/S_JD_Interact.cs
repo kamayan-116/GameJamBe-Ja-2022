@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 親クラス
 public class S_JD_Interact : MonoBehaviour
 {
     private bool canBeActivate = false;

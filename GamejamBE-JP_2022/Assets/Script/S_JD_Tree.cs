@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using XInputDotNetPure;
 
+// 木の切断に関するプログラム
+// 鎌倉の担当行：38行目→falseにすることで無限増殖バグ解除
 public class S_JD_Tree : S_JD_Interact
 {
     public Animator UpTreeAnim;

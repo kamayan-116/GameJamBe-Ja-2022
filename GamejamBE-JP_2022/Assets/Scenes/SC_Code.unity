@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1193238, g: 0.09637459, b: 0.68212897, a: 1}
+  m_IndirectSpecularColor: {r: 0.0025707777, g: 0.0021961657, b: 0.018419148, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -330,10 +330,28 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1214689659, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1839606302, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 338163305048369805, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_UpdateMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 680960907294180931, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 869126818855816084, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2475535908170782706, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
@@ -440,6 +458,11 @@ PrefabInstance:
       propertyPath: backToGameButton
       value: 
       objectReference: {fileID: 4788320512856652121}
+    - target: {fileID: 6756279518868551304, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6756279520512724089, guid: ea46f212c1384bb438ce95471a1c7018,
         type: 3}
       propertyPath: m_Pivot.x
@@ -549,6 +572,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6756279520635707598, guid: ea46f212c1384bb438ce95471a1c7018,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea46f212c1384bb438ce95471a1c7018, type: 3}

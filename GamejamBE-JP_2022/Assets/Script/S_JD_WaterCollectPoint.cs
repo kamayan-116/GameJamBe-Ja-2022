@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
 
+// 水を汲む事に関するプログラム
+// 鎌倉の担当行：40行目→falseにすることで無限増殖バグ解除
 public class S_JD_WaterCollectPoint : S_JD_Interact
 {
     public float TimeBetweenCollect = 2f;

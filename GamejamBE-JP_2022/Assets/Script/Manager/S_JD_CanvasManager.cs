@@ -5,33 +5,34 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+// SC_CodeのCanvasに関するプログラム
+// 鎌倉の担当行：15~28、47~51、59~93、100~135、156~190
 public class S_JD_CanvasManager : MonoBehaviour
 {
     #region 変数宣言
     public static S_JD_CanvasManager Instance;
 
-    [SerializeField] Slider earthSlider;
-    [SerializeField] Slider playerSlider;
-    [SerializeField] Text waterText;
-    [SerializeField] Text treeText;
-    [SerializeField] GameObject pauseMenuPanel;
-    [SerializeField] GameObject endingPanel;
-    [SerializeField] Text playTimeText;
-    [SerializeField] GameObject pressTextObj;
+    [SerializeField] GameObject HUD;  // ゲーム中UIパネル
+    [SerializeField] GameObject pauseMenuPanel;  // ポーズメニューUIパネル
+    [SerializeField] GameObject endingPanel;  // 結果UIパネル
+    [SerializeField] Slider earthSlider;  // 環境のスライダー
+    [SerializeField] Slider playerSlider;  // プレイヤーのストレススライダー
+    [SerializeField] Text waterText;  // 水の所持数テキスト
+    [SerializeField] Text treeText;  // 木の所持数テキスト
+    [SerializeField] Text playTimeText;  // 現在のスコアテキスト
+    [SerializeField] Text bestPlayTimeText;  // ハイスコアテキスト
+    [SerializeField] GameObject pressTextObj;  // Interactの際のPushオブジェクト
     [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip[] audioClips;
-    public GameObject HUD;
-    public GameObject MiniGamePanel;
+    [SerializeField] AudioClip[] audioClips;  // ボタンに関する音の配列
+    [SerializeField] Image gameOverImage;  // ゲームオーバ画像
+    [SerializeField] Sprite[] gameOverSprite;  // ゲームオーバー時のSprite配列
+    public GameObject MiniGamePanel;  // 風呂の時のPushUIパネル
     public Animator SmahButton;
-    public Slider staminaSlider;
-
-    public GameObject GameOverEarth;
-    public GameObject GameOverStress;
-
+    public Slider staminaSlider;  // プレイヤーのスタミナスライダー
 
     public Animator DeathFade;
 
-    public GameObject backToGameButton, endingButton;
+    public GameObject backToGameButton;  // ポーズメニューのゲーム再開ボタン
     #endregion
 
 
@@ -41,14 +42,9 @@ public class S_JD_CanvasManager : MonoBehaviour
         else Destroy(this);
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
-        //float cancel = Input.GetAxis("Cancel");
+        // ポーズ画面への遷移
         if(Input.GetButton("Cancel") && S_JD_GameManager.Instance.InGame)
         {
             GoToPause();
@@ -60,7 +56,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         DeathFade.SetTrigger("DeathTrigger");
     }
 
-    // Argument(_value) is 0~100
+    // 環境のスライダーの値代入
     public void SetValueEarth(float _value)
     {
         //StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
@@ -71,23 +67,26 @@ public class S_JD_CanvasManager : MonoBehaviour
     /// Player slider value
     /// </summary>
     /// <param name="_value">value between 0 and 100</param>
+    // プレイヤーストレスのスライダーの値代入
     public void SetValuePlayer(float _value)
     {
         playerSlider.value = _value;
        //StartCoroutine(SliderValueChange(earthSlider, earthSlider.value, _value));
     }
 
+    // プレイヤーのスタミナのスライダーの値代入
     public void SetValueStamina(float _value)
     {
         staminaSlider.value = _value;
     }
 
-    // Argument(_value) is 0~100
+    // 水の保持数のテキスト
     public void SetValueWater(int _value)
     {
         waterText.text = "×" + _value;
     }
 
+    // 木の保持数のテキスト
     public void SetValueTree(int _value)
     {
         treeText.text = "×" + _value;
@@ -98,7 +97,7 @@ public class S_JD_CanvasManager : MonoBehaviour
         HUD.SetActive(_active);
     }
 
-    // Coroutine function to dynamically move slider values
+    // 流動的な値な変化のためのコルーチン関数
     private IEnumerator SliderValueChange(Slider slider, float nowValue, float targetValue)
     {
         while(nowValue <= targetValue)
@@ -116,6 +115,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     }
 
     // Function of the button to go to the pause menu
+    // ポーズメニューの表示
     public void GoToPause()
     {
         HUD.SetActive(false);
@@ -125,6 +125,7 @@ public class S_JD_CanvasManager : MonoBehaviour
     }
 
     // Function of the button to return to the game in the pause
+    // ポーズメニューからゲーム再開
     public void BackToGame()
     {
         HUD.SetActive(true);
@@ -152,32 +153,37 @@ public class S_JD_CanvasManager : MonoBehaviour
         }
     }
 
-    // Ending Panel Functions
+    // ゲーム結果の表示
     public void EndingPanel(float _clearTime, int _clearCause)
     {
         HUD.SetActive(false);
         endingPanel.SetActive(true);
+        // 今回の結果の表示
         playTimeText.text = _clearTime + " Days";
 
-        if(_clearCause == 0)
+        // ハイスコア更新
+        var bestScore = PlayerPrefs.GetFloat("BestScore", 0);
+        if(_clearTime > bestScore)
         {
-            GameOverEarth.SetActive(true);
-            GameOverStress.SetActive(false);
+            bestScore = _clearTime;
+            PlayerPrefs.SetFloat("BestScore", bestScore);
         }
-        else if (_clearCause == 1)
-        {
-            GameOverEarth.SetActive(false);
-            GameOverStress.SetActive(true);
 
+        PlayerPrefs.Save();
+        bestPlayTimeText.text = "Best Day：" + bestScore + "Days";
+
+        // ゲームオーバ理由に応じたSpriteチェンジ
+        if(_clearCause <= 1)
+        {
+            gameOverImage.sprite = gameOverSprite[_clearCause];
         }
         else
         {
             print("Error in the ending condition");
         }
-        EventSystem.current.SetSelectedGameObject(endingButton);
-        //clearImage.sprite = clearSprite[_clearCause];
     }
 
+    // 結果画面の終了
     public void RemoveEndingPanel()
     {
         endingPanel.SetActive(false);
@@ -197,5 +203,4 @@ public class S_JD_CanvasManager : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClips[0]);
     }
-
 }

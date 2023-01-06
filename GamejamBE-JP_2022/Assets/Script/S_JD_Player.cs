@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using XInputDotNetPure;
 
+// プレイヤーの動きに関するプログラム
+// 鎌倉の担当行：60,61,283~316
 public class S_JD_Player : MonoBehaviour
 {
     public static S_JD_Player Instance;
-
 
     public float speed = 10;
     public GameObject PlayerCharacter;
@@ -35,9 +36,7 @@ public class S_JD_Player : MonoBehaviour
     public ParticleSystem NinjaSmoke;
     public AudioSource NinjaSoundEffect;
     public GameObject sleepParticle;
-    // public ParticleSystem sleep;
     public GameObject smallsleepParticle;
-    // public ParticleSystem smallsleep;
     public ParticleSystem heartParticle;
     public ParticleSystem footStepParticle;
 
@@ -58,7 +57,6 @@ public class S_JD_Player : MonoBehaviour
         S_JD_CanvasManager.Instance.SetValueWater(WaterValue);
         S_JD_CanvasManager.Instance.SetValueTree(WoodValue);
         GambleElement();
-        //PlayerCharacter.transform.SetPositionAndRotation(new Vector3(0, Distance, 0), Quaternion.identity);
         sleepParticle.SetActive(false);
         smallsleepParticle.SetActive(false);
     }
@@ -99,8 +97,6 @@ public class S_JD_Player : MonoBehaviour
             {
                 if (footStepParticle.isPlaying) footStepParticle.Stop();
             }
-
-
         }
 
         if (CutMode)
@@ -214,7 +210,6 @@ public class S_JD_Player : MonoBehaviour
         if (Input.GetButtonDown("Interact"))
         {
             MiniGameScore += 1;
-            //print(MiniGameScore);
             S_JD_CanvasManager.Instance.SmahButton.SetTrigger("Press");
             //S_JD_GameManager.Instance.EarthValue -= S_JD_GameManager.Instance.actualEarthDamage;
             EarthAttackValue += S_JD_GameManager.Instance.actualEarthDamage;
@@ -236,7 +231,6 @@ public class S_JD_Player : MonoBehaviour
                 StartCoroutine(ExitMiniGameLatence(2f));
             }
         }
-
     }
 
     IEnumerator ExitMiniGameLatence(float _delay)
@@ -271,19 +265,16 @@ public class S_JD_Player : MonoBehaviour
         {
             //Water Element
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.59f, 0.78f, 0.90f));
-            //print(PlayerCharacter.GetComponent<MeshRenderer>().material.GetColor("_Color"));
         }
         else if (elementType == ElementType.Fire)
         {
             //FireElement
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.77f, 0.45f, 0.26f));
-            //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else if (elementType == ElementType.Wood)
         {
             //GreenElement
             PlayerCharacter.GetComponent<MeshRenderer>().material.SetColor("_Color", new Color(0.74f, 0.75f, 0.44f));
-            //print(PlayerCharacter.GetComponent<MeshRenderer>().material);
         }
         else
             print("Error in the Element set");
@@ -291,14 +282,8 @@ public class S_JD_Player : MonoBehaviour
 
     public void GambleElement()
     {
-        ElementType previousElement = elementType;
-        elementType = (ElementType)System.Enum.ToObject(typeof(ElementType), Random.Range(0, 3));
-        if (previousElement == elementType)
-            GambleElement();
-        else
-        {
-            SetElement();
-        }
+        elementType++;
+        if((int)elementType == 3) elementType = 0;
     }
 
     #region Activate Particles
@@ -306,25 +291,21 @@ public class S_JD_Player : MonoBehaviour
     public void SetActiveSleep()
     {
         sleepParticle.SetActive(true);
-        // sleep.Play();
     }
 
     public void SetInactiveSleep()
     {
         sleepParticle.SetActive(false);
-        // sleep.Stop();
     }
 
     public void SetActiveSmallSleep()
     {
         smallsleepParticle.SetActive(true);
-        // smallsleep.Play();
     }
 
     public void SetInactiveSmallSleep()
     {
         smallsleepParticle.SetActive(false);
-        // smallsleep.Stop();
     }
 
     public void PlayHeartParticle()
@@ -358,5 +339,4 @@ public class S_JD_Player : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         AvailableMouvement = true;
     }
-
 }

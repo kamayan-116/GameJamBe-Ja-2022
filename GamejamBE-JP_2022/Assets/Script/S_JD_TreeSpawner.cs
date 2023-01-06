@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// 木の成長に関するプログラム
 public class S_JD_TreeSpawner : MonoBehaviour
 {
     public bool InGrowMode = true;

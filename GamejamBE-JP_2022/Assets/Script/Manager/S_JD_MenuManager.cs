@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+// タイトルやゲーム説明などのMenuManagerに関するプログラム
 public class S_JD_MenuManager : MonoBehaviour
 {
 
@@ -79,22 +80,21 @@ public class S_JD_MenuManager : MonoBehaviour
         MainMenuPanel.SetActive(false);
         TutoPanel1.SetActive(true);
         EventSystem.current.SetSelectedGameObject(tuto1Button);
-
     }
+
     public void SetTutoPanel2()
     {
         ButtonApprove.Play();
         TutoPanel1.SetActive(false);
         TutoPanel2.SetActive(true);
         EventSystem.current.SetSelectedGameObject(tuto2Button);
-
     }
+
     public void SetTutoPanel3()
     {
         ButtonApprove.Play();
         TutoPanel2.SetActive(false);
         TutoPanel3.SetActive(true);
         EventSystem.current.SetSelectedGameObject(tuto3Button);
-
     }
 }
